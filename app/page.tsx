@@ -102,6 +102,8 @@ export default function Portfolio() {
   const projectsRef = useRef<HTMLElement>(null);
   const skillsRef = useRef<HTMLElement>(null);
   const contactRef = useRef<HTMLElement>(null);
+  const statsRef = useRef<HTMLElement>(null);
+  const hasAnimated = useRef(false);
 
   // Statistics counter animation
   const [stats, setStats] = useState({
@@ -189,33 +191,56 @@ export default function Portfolio() {
 
   // Statistics counter animation
   useEffect(() => {
+    const targetStats = {
+      systems: 2,
+      certifications: 4,
+      experience: 1.5,
+      gpa: 3.51,
+    };
+
     const animateStats = () => {
-      if (skillsRef.current) {
-        const rect = skillsRef.current.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100 && rect.bottom > 0) {
+      if (statsRef.current && !hasAnimated.current) {
+        const rect = statsRef.current.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 50 && rect.bottom > 0) {
+          hasAnimated.current = true;
+          const duration = 2000; // 2 seconds
+          const steps = 60;
+          const intervalTime = duration / steps;
+          let currentStep = 0;
+
           const interval = setInterval(() => {
-            setStats((prev) => {
-              if (prev.systems < 2)
-                return { ...prev, systems: prev.systems + 1 };
-              if (prev.certifications < 4)
-                return { ...prev, certifications: prev.certifications + 1 };
-              if (prev.experience < 1.5)
-                return {
-                  ...prev,
-                  experience: Number((prev.experience + 0.1).toFixed(1)),
-                };
-              if (prev.gpa < 3.51)
-                return { ...prev, gpa: Number((prev.gpa + 0.13).toFixed(2)) };
-              clearInterval(interval);
-              return prev;
+            currentStep++;
+            const progress = currentStep / steps;
+
+            setStats({
+              systems: Math.min(
+                targetStats.systems,
+                Math.floor(targetStats.systems * progress),
+              ),
+              certifications: Math.min(
+                targetStats.certifications,
+                Math.floor(targetStats.certifications * progress),
+              ),
+              experience: Number(
+                Math.min(targetStats.experience, targetStats.experience * progress).toFixed(
+                  1,
+                ),
+              ),
+              gpa: Number(
+                Math.min(targetStats.gpa, targetStats.gpa * progress).toFixed(2),
+              ),
             });
-          }, 30);
+
+            if (currentStep >= steps) {
+              clearInterval(interval);
+            }
+          }, intervalTime);
         }
       }
     };
 
     window.addEventListener("scroll", animateStats);
-    animateStats();
+    animateStats(); // Check on mount
 
     return () => window.removeEventListener("scroll", animateStats);
   }, []);
@@ -499,7 +524,10 @@ export default function Portfolio() {
       </section>
 
       {/* Statistics Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 border-t border-border/50 bg-gradient-to-br from-primary/5 to-accent/5">
+      <section
+        ref={statsRef}
+        className="py-16 px-4 sm:px-6 lg:px-8 border-t border-border/50 bg-gradient-to-br from-primary/5 to-accent/5"
+      >
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center space-y-2">
