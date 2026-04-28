@@ -107,11 +107,11 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   verification: {
-    google: "your-google-verification-code",
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "your-google-verification-code",
     // Add other verification codes as needed
   },
   category: "technology",
-  metadataBase: new URL("https://hamzanabil.com"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://hamzanabil.com"),
   alternates: {
     canonical: "/",
     languages: {
