@@ -24,6 +24,15 @@ import {
   ArrowUp,
 } from "lucide-react";
 
+// Dynamically calculate years of experience from start date
+const EXPERIENCE_START = new Date(2024, 9, 22); // Oct 22, 2024
+function calcYearsOfExperience(): number {
+  const now = new Date();
+  const diffMs = now.getTime() - EXPERIENCE_START.getTime();
+  const years = diffMs / (1000 * 60 * 60 * 24 * 365.25);
+  return Math.round(years * 10) / 10; // round to 1 decimal
+}
+
 export default function Portfolio() {
   const emailDraftUrl =
     "https://mail.google.com/mail/?view=cm&fs=1&to=hamzapk@gmail.com";
@@ -194,7 +203,7 @@ export default function Portfolio() {
     const targetStats = {
       systems: 2,
       certifications: 4,
-      experience: 1.5,
+      experience: calcYearsOfExperience(),
       gpa: 3.51,
     };
 
@@ -203,7 +212,7 @@ export default function Portfolio() {
         const rect = statsRef.current.getBoundingClientRect();
         if (rect.top < window.innerHeight - 50 && rect.bottom > 0) {
           hasAnimated.current = true;
-          const duration = 2000; // 2 seconds
+          const duration = 2000; // 2 secondsClaude agents kaisa or kahan create hota hain?? I mean to say Claude code ma ya phir kahin or??
           const steps = 60;
           const intervalTime = duration / steps;
           let currentStep = 0;
@@ -222,12 +231,15 @@ export default function Portfolio() {
                 Math.floor(targetStats.certifications * progress),
               ),
               experience: Number(
-                Math.min(targetStats.experience, targetStats.experience * progress).toFixed(
-                  1,
-                ),
+                Math.min(
+                  targetStats.experience,
+                  targetStats.experience * progress,
+                ).toFixed(1),
               ),
               gpa: Number(
-                Math.min(targetStats.gpa, targetStats.gpa * progress).toFixed(2),
+                Math.min(targetStats.gpa, targetStats.gpa * progress).toFixed(
+                  2,
+                ),
               ),
             });
 
@@ -377,7 +389,7 @@ export default function Portfolio() {
               </p>
               <div className="space-y-3">
                 <p className="text-lg text-foreground/80 leading-relaxed animate-slide-in animation-delay-200 text-justify">
-                  Quality Assurance Engineer with 1.5 years of experience in
+                  Quality Assurance Engineer with {calcYearsOfExperience()} years of experience in
                   manual and automation testing, with hands-on expertise in
                   Playwright (TypeScript), test case design, defect reporting,
                   and healthcare application testing.
