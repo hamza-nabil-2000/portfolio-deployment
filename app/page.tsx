@@ -5,7 +5,6 @@ import Image from "next/image";
 import {
   Menu,
   X,
-  Github,
   Linkedin,
   Mail,
   Phone,
@@ -19,7 +18,6 @@ import {
   Terminal,
   Shield,
   Zap,
-  CheckCircle,
   Star,
   ArrowUp,
 } from "lucide-react";
@@ -33,6 +31,127 @@ function calcYearsOfExperience(): number {
   return Math.round(years * 10) / 10; // round to 1 decimal
 }
 
+// ── Content arrays (single source of truth — edit these to update the whole site) ──
+const experienceHighlights = [
+  "Performed functional and regression testing for CHARMS and Prev Health systems to ensure product stability.",
+  "Developed robust automation scripts using Playwright and TypeScript, significantly improving testing efficiency.",
+  "Designed, executed, and maintained comprehensive manual test cases based on evolving business requirements",
+  "Identified and documented high-quality defect reports with precise reproduction steps, facilitating faster resolution.",
+  "Collaborated cross-functional development and QA teams to maintain high standards of product quality.",
+];
+
+const projectCards = [
+  {
+    icon: TestTube,
+    title: "Healthcare Testing",
+    items: ["Prev Health Testing", "CHARMS Testing"],
+  },
+  {
+    icon: Code2,
+    title: "Automation Work",
+    items: ["Playwright scripts", "TypeScript-based tests", "UI workflow checks"],
+  },
+  {
+    icon: Layers,
+    title: "Academic Project",
+    items: ["DICOM Viewer & Annotator using ReactJS", "SQL Server database integration", "Medical imaging workflow"],
+  },
+];
+
+const certifications = [
+  { title: "Software Testing / QA", provider: "LinkedIn Learning" },
+  { title: "Selenium Essential Training", provider: "LinkedIn Learning" },
+  { title: "React Full-Stack Site Development", provider: "LinkedIn Learning" },
+  { title: "Angular: Creating and Hosting a Full-Stack Site", provider: "LinkedIn Learning" },
+];
+
+// Hero description text (included in evidence scanning)
+const heroText =
+  "Quality Assurance Engineer manual automation testing Playwright TypeScript test case design defect reporting healthcare application testing";
+
+// Badge text
+const badgeText = "QA Engineer Manual Automation";
+
+// Full about paragraphs
+const aboutTexts = [
+  "Quality Assurance Engineer focused on improving software quality through structured Manual Testing and Practical Automation. Experience includes Playwright with TypeScript Functional and Regression testing Test Case Design and Defect Reporting in Real Healthcare Products.",
+  "HTML5 CSS3 PHP Angular ReactJS NextJS SQL Server working knowledge of development technologies.",
+];
+
+// ── Pure evidence-based skill computation (no baseline, no maxLevel per skill) ──
+interface SkillDef {
+  name: string;
+  keywords: string[];     // searched in experience, projects, hero, about
+  certKeywords: string[]; // searched in certification titles
+}
+
+function computeSkillLevel(def: SkillDef): number {
+  const hasMatch = (text: string) =>
+    def.keywords.some((kw) => new RegExp(kw, "i").test(text));
+
+  const hasCertMatch = (text: string) =>
+    def.certKeywords.some((kw) => new RegExp(kw, "i").test(text));
+
+  // Count how many experience highlights mention this skill
+  const expMatches = experienceHighlights.filter(hasMatch).length;
+
+  // Project evidence: how many projects mention this skill
+  const projMatches = projectCards.filter((p) =>
+    p.items.some(hasMatch)
+  ).length;
+
+  // Certification evidence
+  const certMatch = certifications.some((c) => hasCertMatch(c.title));
+
+  // About / hero / badge presence
+  const inAbout = aboutTexts.some(hasMatch);
+  const inHero  = hasMatch(heroText);
+  const inBadge = hasMatch(badgeText);
+
+  // ── Score calculation (max ≈ 95) ──────────────────────────────────────
+  // Experience is the strongest signal (you use it professionally)
+  let score = 0;
+  if (expMatches >= 1) score += 70;
+  if (expMatches >= 2) score += 10; // mentioned across multiple duties
+
+  // Supporting evidence
+  if (inBadge)          score += 5;
+  if (inHero)           score += 8;
+  if (projMatches >= 1) score += 7;
+  if (certMatch)        score += 8;
+  // About mention with no direct experience = working knowledge (scored separately)
+  if (inAbout && expMatches === 0) score += 20;
+  if (inAbout && expMatches >= 1)  score += 5;
+
+  return Math.min(95, score);
+}
+
+const qaSkillDefs: SkillDef[] = [
+  { name: "Playwright (TypeScript)", keywords: ["playwright", "typescript", "automation"], certKeywords: [] },
+  { name: "Selenium (Java)",         keywords: ["selenium", "java"],                       certKeywords: ["selenium"] },
+  { name: "Manual Testing",          keywords: ["manual", "test case"],                    certKeywords: ["testing", "qa"] },
+  { name: "Functional Testing",      keywords: ["functional"],                             certKeywords: ["testing", "qa"] },
+  { name: "Regression Testing",      keywords: ["regression"],                             certKeywords: ["testing", "qa"] },
+  { name: "API Testing",             keywords: ["api"],                                    certKeywords: [] },
+  { name: "UI/UX Testing",           keywords: ["ui", "workflow", "interface"],            certKeywords: [] },
+  { name: "Non-functional Testing",  keywords: ["non-functional", "performance"],          certKeywords: [] },
+  { name: "Test Case Design",        keywords: ["test case", "design"],                    certKeywords: ["testing", "qa"] },
+  { name: "Defect Reporting & Bug Tracking", keywords: ["defect", "bug"],                 certKeywords: [] },
+];
+
+const devSkillDefs: SkillDef[] = [
+  { name: "ReactJS / NextJS", keywords: ["react", "nextjs", "dicom"],  certKeywords: ["react"] },
+  { name: "Angular",          keywords: ["angular"],                    certKeywords: ["angular"] },
+  { name: "HTML5 / CSS3",     keywords: ["html", "css"],               certKeywords: [] },
+  { name: "PHP",              keywords: ["php"],                        certKeywords: [] },
+  { name: "SQL Queries",      keywords: ["sql"],                        certKeywords: [] },
+  { name: "Prisma Queries",   keywords: ["prisma"],                     certKeywords: [] },
+  { name: "NestJS",           keywords: ["nestjs", "nest"],             certKeywords: [] },
+];
+
+const qaSkills  = qaSkillDefs.map((def) => ({ name: def.name, level: computeSkillLevel(def) }));
+const devSkills = devSkillDefs.map((def) => ({ name: def.name, level: computeSkillLevel(def) }));
+
 export default function Portfolio() {
   const emailDraftUrl =
     "https://mail.google.com/mail/?view=cm&fs=1&to=hamzapk@gmail.com";
@@ -42,67 +161,8 @@ export default function Portfolio() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const qaSkills = [
-    { name: "Playwright (TypeScript)", level: 88 },
-    { name: "Selenium (Java)", level: 30 },
-    { name: "Manual Testing", level: 92 },
-    { name: "Functional Testing", level: 90 },
-    { name: "Regression Testing", level: 89 },
-    { name: "API Testing", level: 30 },
-    { name: "UI/UX Testing", level: 76 },
-    { name: "Non-functional Testing", level: 27 },
-    { name: "Test Case Design", level: 90 },
-    { name: "Defect Reporting & Bug Tracking", level: 95 },
-  ];
-  const devSkills = [
-    { name: "ReactJS / NextJS", level: 45 },
-    { name: "Angular", level: 80 },
-    { name: "HTML5 / CSS3", level: 85 },
-    { name: "PHP", level: 15 },
-    { name: "SQL Queries", level: 60 },
-    { name: "Prisma Queries", level: 40 },
-    { name: "NestJS", level: 25 },
-  ];
-  const experienceHighlights = [
-    "Performed functional and regression testing for CHARMS and Prev Health systems to ensure product stability.",
-    "Developed robust automation scripts using Playwright and TypeScript, significantly improving testing efficiency.",
-    "Designed, executed, and maintained comprehensive manual test cases based on evolving business requirements",
-    "Identified and documented high-quality defect reports with precise reproduction steps, facilitating faster resolution.",
-    "Collaborated cross-functional development and QA teams to maintain high standards of product quality.",
-  ];
-  const projectCards = [
-    {
-      icon: TestTube,
-      title: "Healthcare Testing",
-      items: ["Prev Health Testing", "CHARMS Testing"],
-    },
-    {
-      icon: Code2,
-      title: "Automation Work",
-      items: [
-        "Playwright scripts",
-        "TypeScript-based tests",
-        "UI workflow checks",
-      ],
-    },
-    {
-      icon: Layers,
-      title: "Academic Project",
-      items: ["DICOM Viewer & Annotator", "Medical imaging workflow"],
-    },
-  ];
-  const certifications = [
-    { title: "Software Testing / QA", provider: "LinkedIn Learning" },
-    { title: "Selenium Essential Training", provider: "LinkedIn Learning" },
-    {
-      title: "React Full-Stack Site Development",
-      provider: "LinkedIn Learning",
-    },
-    {
-      title: "Angular: Creating and Hosting a Full-Stack Site",
-      provider: "LinkedIn Learning",
-    },
-  ];
+  // qaSkills, devSkills, experienceHighlights, projectCards, certifications
+  // are now computed at module level from the content arrays above.
 
   // Refs for scroll-triggered animations
   const heroRef = useRef<HTMLElement>(null);
@@ -201,8 +261,8 @@ export default function Portfolio() {
   // Statistics counter animation
   useEffect(() => {
     const targetStats = {
-      systems: 2,
-      certifications: 4,
+      systems: projectCards[0].items.length, // derived from Healthcare Testing project items
+      certifications: certifications.length,  // derived from certifications array
       experience: calcYearsOfExperience(),
       gpa: 3.51,
     };
@@ -212,7 +272,7 @@ export default function Portfolio() {
         const rect = statsRef.current.getBoundingClientRect();
         if (rect.top < window.innerHeight - 50 && rect.bottom > 0) {
           hasAnimated.current = true;
-          const duration = 2000; // 2 secondsClaude agents kaisa or kahan create hota hain?? I mean to say Claude code ma ya phir kahin or??
+          const duration = 2000; // 2 seconds
           const steps = 60;
           const intervalTime = duration / steps;
           let currentStep = 0;
