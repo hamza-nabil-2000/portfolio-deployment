@@ -67,15 +67,15 @@ const certifications = [
 
 // Hero description text (included in evidence scanning)
 const heroText =
-  "Quality Assurance Engineer manual automation testing Playwright TypeScript test case design defect reporting healthcare application testing";
+  "Quality Assurance Engineer manual automation testing Playwright TypeScript test case design defect reporting healthcare application testing analytical problem-solving skills";
 
 // Badge text
 const badgeText = "QA Engineer Manual Automation";
 
 // Full about paragraphs
 const aboutTexts = [
-  "Quality Assurance Engineer focused on improving software quality through structured Manual Testing and Practical Automation. Experience includes Playwright with TypeScript Functional and Regression testing Test Case Design and Defect Reporting in Real Healthcare Products.",
-  "HTML5 CSS3 PHP Angular ReactJS NextJS SQL Server working knowledge of development technologies.",
+  "Quality Assurance Engineer focused on improving software quality through structured Manual Testing and Practical Automation. Possess strong analytical and problem-solving skills, with hands-on experience in healthcare applications. Experience includes Playwright with TypeScript, Functional and Regression testing, Test Case Design, and Defect Reporting.",
+  "BS in Information Technology from PMAS Arid Agriculture University. Working knowledge of HTML5, CSS3, PHP, Angular, ReactJS/NextJS, and SQL Server.",
 ];
 
 // ── Pure evidence-based skill computation (no baseline, no maxLevel per skill) ──
@@ -128,15 +128,17 @@ function computeSkillLevel(def: SkillDef): number {
 
 const qaSkillDefs: SkillDef[] = [
   { name: "Playwright (TypeScript)", keywords: ["playwright", "typescript", "automation"], certKeywords: [] },
-  { name: "Selenium (Java)",         keywords: ["selenium", "java"],                       certKeywords: ["selenium"] },
+  { name: "Selenium (Introductory)", keywords: ["selenium"],                               certKeywords: ["selenium"] },
   { name: "Manual Testing",          keywords: ["manual", "test case"],                    certKeywords: ["testing", "qa"] },
   { name: "Functional Testing",      keywords: ["functional"],                             certKeywords: ["testing", "qa"] },
   { name: "Regression Testing",      keywords: ["regression"],                             certKeywords: ["testing", "qa"] },
   { name: "API Testing",             keywords: ["api"],                                    certKeywords: [] },
-  { name: "UI/UX Testing",           keywords: ["ui", "workflow", "interface"],            certKeywords: [] },
+  { name: "UI/UX Testing",           keywords: ["ui", "ux", "workflow", "interface"],     certKeywords: [] },
   { name: "Non-functional Testing",  keywords: ["non-functional", "performance"],          certKeywords: [] },
   { name: "Test Case Design",        keywords: ["test case", "design"],                    certKeywords: ["testing", "qa"] },
   { name: "Defect Reporting & Bug Tracking", keywords: ["defect", "bug"],                 certKeywords: [] },
+  { name: "SDLC & STLC",             keywords: ["sdlc", "stlc", "lifecycle"],              certKeywords: [] },
+  { name: "Agile / Scrum",           keywords: ["agile", "scrum"],                         certKeywords: [] },
 ];
 
 const devSkillDefs: SkillDef[] = [
@@ -145,8 +147,6 @@ const devSkillDefs: SkillDef[] = [
   { name: "HTML5 / CSS3",     keywords: ["html", "css"],               certKeywords: [] },
   { name: "PHP",              keywords: ["php"],                        certKeywords: [] },
   { name: "SQL Queries",      keywords: ["sql"],                        certKeywords: [] },
-  { name: "Prisma Queries",   keywords: ["prisma"],                     certKeywords: [] },
-  { name: "NestJS",           keywords: ["nestjs", "nest"],             certKeywords: [] },
 ];
 
 const qaSkills  = qaSkillDefs.map((def) => ({ name: def.name, level: computeSkillLevel(def) }));
@@ -450,9 +450,10 @@ export default function Portfolio() {
               <div className="space-y-3">
                 <p className="text-lg text-foreground/80 leading-relaxed animate-slide-in animation-delay-200 text-justify">
                   Quality Assurance Engineer with {calcYearsOfExperience()} years of experience in
-                  manual and automation testing, with hands-on expertise in
-                  Playwright (TypeScript), test case design, defect reporting,
-                  and healthcare application testing.
+                  manual and automation testing. Proficient in Playwright (TypeScript),
+                  functional and regression testing, test case design, and defect reporting.
+                  Possess strong analytical and problem-solving skills, complemented by a BS
+                  in Information Technology and hands-on experience in healthcare applications.
                 </p>
               </div>
               <div className="flex flex-wrap gap-4 pt-4 animate-slide-in animation-delay-400">
@@ -561,9 +562,11 @@ export default function Portfolio() {
               <p className="text-lg text-foreground/80 leading-relaxed text-justify">
                 I am a Quality Assurance Engineer focused on improving software
                 quality through structured Manual Testing and Practical
-                Automation. My Experience includes Playwright with TypeScript,
+                Automation. I possess strong analytical and problem-solving skills,
+                complemented by hands-on experience in healthcare applications.
+                My experience includes Playwright with TypeScript,
                 Functional and Regression testing, Test Case Design, and Defect
-                Reporting in Real Healthcare Products.
+                Reporting.
               </p>
               {/* <div className="flex items-center gap-3 text-primary">
                 <CheckCircle size={20} />
@@ -577,7 +580,7 @@ export default function Portfolio() {
             <div className="space-y-4">
               <p className="text-lg text-foreground/80 leading-relaxed text-justify">
                 I hold a BS in Information Technology with a 3.51 GPA from
-                Barani Institute of Information Technology (BIIT) and currently
+                PMAS Arid Agriculture University and currently
                 work at CHI Technologies in Islamabad. Alongside QA work, I also
                 have working knowledge of HTML5, CSS3, PHP, Angular, and
                 ReactJS/NextJS.
@@ -657,7 +660,7 @@ export default function Portfolio() {
                 <div className="flex flex-wrap items-start justify-between mb-6 gap-4">
                   <div>
                     <h3 className="text-2xl font-bold text-primary">
-                      QA Engineer(Manual & Automation)
+                      Software Quality Assurance Engineer
                     </h3>
                     <p className="text-lg text-foreground/80 mt-1">
                       CHI Technologies Pvt. Ltd., Islamabad
@@ -699,10 +702,10 @@ export default function Portfolio() {
             <div className="flex flex-wrap items-start justify-between mb-6 gap-4">
               <div>
                 <h3 className="text-2xl font-bold text-primary">
-                  BS Information Technology
+                  BS Information Technology (BS IT)
                 </h3>
                 <p className="text-lg text-foreground/80 mt-1">
-                  Barani Institute of Information Technology (BIIT)
+                  PMAS Arid Agriculture University
                 </p>
               </div>
               <span className="text-sm text-primary border border-primary/30 px-4 py-2 rounded-full bg-primary/5">
@@ -710,7 +713,7 @@ export default function Portfolio() {
               </span>
             </div>
             <p className="text-foreground/80 mb-4 text-lg">
-              CGPA: <span className="text-primary font-bold">3.51</span>
+              GPA: <span className="text-primary font-bold">3.51</span>
             </p>
             <div className="mt-6 p-4 bg-primary/5 rounded-lg border border-primary/20 group-hover:border-primary/40 transition-all">
               <p className="font-semibold text-primary mb-2">
