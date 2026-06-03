@@ -4,43 +4,50 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Dark Green Theme - Deep Forest & Neon */
-  --background: 150 30% 6%; /* #0a1f14 */
-  --foreground: 145 40% 85%; /* #c8f0dc */
-  --card: 150 25% 8%; /* #0e2016 */
-  --card-foreground: 145 40% 85%;
-  --popover: 150 25% 8%;
-  --popover-foreground: 145 40% 85%;
-  --primary: 142 85% 55%; /* #3bff7a - Neon Green */
-  --primary-foreground: 150 30% 6%;
-  --secondary: 150 25% 12%;
-  --secondary-foreground: 145 40% 85%;
-  --muted: 150 20% 10%;
-  --muted-foreground: 145 30% 60%;
-  --accent: 160 85% 50%; /* #1affb2 - Neon Mint */
-  --accent-foreground: 150 30% 6%;
+  /* ── Core Theme Colors ──
+   * Cyan/Blue theme derived from the profile picture background (#14b4fa).
+   * All colors are defined in HSL to allow easy programmatic adjustments. */
+  --background: 200 40% 6%;      /* Very dark blue-gray: #0a1219 */
+  --foreground: 195 50% 90%;     /* Soft cyan-white: #d9f0f7 */
+  --card: 200 35% 8%;            /* Slightly lighter dark: #0d161f */
+  --card-foreground: 195 50% 90%;
+  --popover: 200 35% 8%;
+  --popover-foreground: 195 50% 90%;
+  --primary: 198 96% 53%;        /* Profile-picture cyan: #14b4fa */
+  --primary-foreground: 200 40% 6%;
+  --secondary: 200 30% 12%;
+  --secondary-foreground: 195 50% 90%;
+  --muted: 200 25% 10%;
+  --muted-foreground: 195 30% 60%;
+  --accent: 190 90% 55%;         /* Brighter sky blue: #1ad6f5 */
+  --accent-foreground: 200 40% 6%;
   --destructive: 0 85% 55%;
-  --destructive-foreground: 145 40% 85%;
-  --border: 150 25% 15%;
-  --input: 150 25% 10%;
-  --ring: 142 85% 55%;
+  --destructive-foreground: 195 50% 90%;
+  --border: 200 30% 15%;
+  --input: 200 30% 10%;
+  --ring: 198 96% 53%;
   --radius: 0.75rem;
-  
-  /* Neon Glow Effects */
-  --neon-green: 142 85% 55%;
-  --neon-mint: 160 85% 50%;
-  --neon-lime: 90 85% 50%;
-  --neon-emerald: 140 85% 55%;
-  
-  --glow-neon-green: 142 85% 55% / 0.8;
-  --glow-neon-mint: 160 85% 50% / 0.7;
-  --glow-neon-lime: 90 85% 50% / 0.6;
-  --glow-neon-emerald: 140 85% 55% / 0.75;
-  --glow-intense: 142 85% 55% / 0.9;
-  --glow-soft: 150 50% 40% / 0.3;
-  --glow-electric: 142 90% 60% / 0.85;
-  
-  /* Neon Shadows */
+
+  /* ── Neon Glow Color Palette ──
+   * Aliases for the primary/accent hues used in glow effects and animations.
+   * Kept as separate tokens so animations can reference them by name. */
+  --neon-green: 198 96% 53%;     /* Maps to --primary (cyan) */
+  --neon-mint: 190 90% 55%;      /* Maps to --accent (sky) */
+  --neon-lime: 210 85% 55%;      /* Deeper blue for variety */
+  --neon-emerald: 185 85% 55%;   /* Teal-ish complement */
+
+  /* Glow opacity variants */
+  --glow-neon-green: 198 96% 53% / 0.8;
+  --glow-neon-mint: 190 90% 55% / 0.7;
+  --glow-neon-lime: 210 85% 55% / 0.6;
+  --glow-neon-emerald: 185 85% 55% / 0.75;
+  --glow-intense: 198 96% 53% / 0.9;
+  --glow-soft: 200 50% 40% / 0.3;
+  --glow-electric: 198 96% 60% / 0.85;
+
+  /* ── Shadow Definitions ──
+   * Neon shadows use the glow tokens above.
+   * Regular shadows are dark overlays for depth on the dark background. */
   --shadow-neon-sm: 0 0 10px hsla(var(--neon-green), 0.5);
   --shadow-neon-md: 0 0 20px hsla(var(--neon-green), 0.6);
   --shadow-neon-lg: 0 0 30px hsla(var(--neon-green), 0.7);
@@ -49,8 +56,7 @@
   --shadow-neon-lime: 0 0 25px hsla(var(--neon-lime), 0.5);
   --shadow-neon-electric: 0 0 40px hsla(var(--neon-green), 0.9);
   --shadow-inner-neon: inset 0 0 30px hsla(var(--neon-green), 0.1);
-  
-  /* Regular Shadows */
+
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.6);
@@ -234,12 +240,12 @@
     border-color: hsl(var(--border));
     outline-color: hsl(var(--ring) / 0.5);
   }
-  
+
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px;
+    scroll-padding-top: 80px; /* Offset for fixed nav height */
   }
-  
+
   body {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
@@ -247,8 +253,11 @@
     position: relative;
     overflow-x: hidden;
   }
-  
-  /* Animated Neon Background */
+
+  /* ── Animated Background Layers ──
+   * Two pseudo-elements create a living background:
+   * 1. body::before  -> soft radial gradients + subtle scanlines
+   * 2. body::after   -> faint grid overlay */
   body::before {
     content: '';
     position: fixed;
@@ -284,50 +293,52 @@
     animation: neonGlow 4s ease-in-out infinite alternate;
   }
   
-  /* Custom Neon Scrollbar */
+  /* ── Custom Scrollbar ── */
   ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
   }
-  
+
   ::-webkit-scrollbar-track {
     background: hsl(var(--muted));
     border-radius: 10px;
   }
-  
+
   ::-webkit-scrollbar-thumb {
     background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
     border-radius: 10px;
     box-shadow: 0 0 10px hsla(var(--neon-green), 0.5);
   }
-  
+
   ::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--primary)));
     box-shadow: 0 0 20px hsla(var(--neon-green), 0.8);
   }
-  
-  /* Neon Selection */
+
+  /* ── Text Selection Styling ── */
   ::selection {
     background: hsla(var(--neon-green), 0.3);
     color: hsl(var(--primary));
     text-shadow: 0 0 10px hsla(var(--neon-green), 0.8);
   }
-  
+
   ::-moz-selection {
     background: hsla(var(--neon-green), 0.3);
     color: hsl(var(--primary));
     text-shadow: 0 0 10px hsla(var(--neon-green), 0.8);
   }
-  
-  /* Neon Focus */
+
+  /* ── Focus Ring ──
+   * Uses the primary cyan glow for keyboard-nav focus states. */
   :focus-visible {
     outline: 2px solid hsl(var(--ring));
     outline-offset: 2px;
     border-radius: calc(var(--radius-sm));
     box-shadow: 0 0 0 4px hsla(var(--neon-green), 0.4), 0 0 20px hsla(var(--neon-green), 0.6);
   }
-  
-  /* Skip to content link */
+
+  /* ── Accessibility: Skip-to-Content Link ──
+   * Hidden by default; appears on first Tab press for keyboard users. */
   .skip-to-content {
     position: absolute;
     top: -40px;
@@ -351,14 +362,16 @@
 }
 
 @layer utilities {
-  /* Neon Card Effect */
+  /* ── Neon Card Component ──
+   * Cards with a subtle border that reveals a gradient border on hover.
+   * Uses a mask-composite technique to create an animated border effect. */
   .neon-card {
     position: relative;
     background: hsl(var(--card));
     border-radius: var(--radius-lg);
     transition: all 0.3s ease;
     overflow: hidden;
-    border: 1px solid rgba(59, 255, 122, 0.2);
+    border: 1px solid rgba(20, 180, 250, 0.2);
   }
   
   .neon-card::before {
@@ -386,21 +399,22 @@
     border-color: transparent;
   }
   
-  /* Neon Text Effect */
+  /* ── Neon Text Effects ── */
   .neon-text {
     color: hsl(var(--primary));
     animation: textNeonPulse 1.5s ease-in-out infinite;
   }
-  
+
   .neon-text-mint {
     color: hsl(var(--accent));
-    text-shadow: 
+    text-shadow:
       0 0 5px hsla(var(--neon-mint), 0.8),
       0 0 10px hsla(var(--neon-mint), 0.8),
       0 0 20px hsla(var(--neon-mint), 0.8);
   }
-  
-  /* Neon Glowing Button */
+
+  /* ── Neon Button ──
+   * Gradient background with a shimmer sweep (::before) and glow on hover. */
   .neon-button {
     position: relative;
     background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
@@ -441,7 +455,8 @@
     transform: translateY(0);
   }
   
-  /* Neon Border Effect */
+  /* ── Neon Border ──
+   * Animated gradient border that cycles between primary and accent colors. */
   .neon-border {
     position: relative;
     border: 2px solid transparent;
@@ -450,7 +465,8 @@
     animation: borderNeon 2s ease-in-out infinite;
   }
   
-  /* Neon Glow Ring */
+  /* ── Neon Glow Ring ──
+   * A rotating gradient ring that appears on hover (useful for avatars or featured items). */
   .neon-ring {
     position: relative;
     border-radius: var(--radius-lg);
@@ -472,7 +488,7 @@
     opacity: 1;
   }
   
-  /* Neon Glass Morphism */
+  /* ── Glass Morphism with Neon Border ── */
   .neon-glass {
     background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(12px) saturate(180%);
@@ -488,7 +504,8 @@
     background: rgba(0, 0, 0, 0.5);
   }
   
-  /* Neon Gradient Background */
+  /* ── Neon Gradient Background ──
+   * Full gradient fill with a blurred glow halo behind it. */
   .neon-gradient {
     background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--neon-lime)));
     position: relative;
@@ -511,7 +528,7 @@
     opacity: 0.8;
   }
   
-  /* Neon Text Gradient */
+  /* ── Gradient Text with Wave Animation ── */
   .neon-text-gradient {
     background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--neon-lime)));
     background-clip: text;
@@ -520,7 +537,7 @@
     animation: neonWave 3s ease-in-out infinite;
   }
   
-  /* Neon Input Fields */
+  /* ── Neon-styled Input Fields ── */
   .neon-input {
     background: hsl(var(--input));
     border: 1px solid hsla(var(--neon-green), 0.3);
@@ -537,7 +554,8 @@
     transform: scale(1.02);
   }
   
-  /* Neon Floating Particles */
+  /* ── Floating Particle Effect ──
+   * Tiny glowing dots that drift upward; used for ambient background motion. */
   .neon-particle {
     position: absolute;
     width: 3px;
@@ -568,7 +586,7 @@
     }
   }
   
-  /* Neon Icon Glow */
+  /* ── Icon Glow on Hover ── */
   .neon-icon {
     filter: drop-shadow(0 0 5px hsla(var(--neon-green), 0.6));
     transition: all 0.3s ease;
@@ -579,7 +597,7 @@
     transform: scale(1.1);
   }
   
-  /* Neon Hover Lift */
+  /* ── Hover Lift with Glow ── */
   .neon-hover-lift {
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
   }
@@ -589,7 +607,7 @@
     box-shadow: var(--shadow-neon-lg);
   }
   
-  /* Neon Pulse Animation */
+  /* ── Animation Utility Classes ── */
   .neon-pulse {
     animation: neonPulse 1.5s ease-in-out infinite;
   }
@@ -639,7 +657,7 @@
     animation: float 3s ease-in-out infinite;
   }
   
-  /* Glass Effect */
+  /* ── Basic Glass Effect (non-neon) ── */
   .glass {
     background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(10px);
@@ -647,7 +665,7 @@
     border-radius: var(--radius-lg);
   }
   
-  /* Hover Lift */
+  /* ── Standard Hover Lift ── */
   .hover-lift {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
@@ -657,13 +675,14 @@
     box-shadow: var(--shadow-lg);
   }
   
-  /* Text Balance */
+  /* ── Text Balance (CSS Text Level 4) ── */
   .text-balance {
     text-wrap: balance;
   }
 }
 
-/* Reduced Motion Support */
+/* ── Accessibility: Reduced Motion ──
+ * Respects user preference by disabling animations. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -675,7 +694,8 @@
   }
 }
 
-/* Print Styles */
+/* ── Print Styles ──
+ * Strip neon effects and switch to high-contrast black/white for printing. */
 @media print {
   * {
     background: transparent !important;
@@ -695,7 +715,8 @@
   }
 }
 
-/* Add to your globals.css - Neon Grid Pattern */
+/* ── Background Grid Pattern ──
+ * Faint cyan grid lines for a technical/cyber aesthetic. */
 .bg-grid-pattern {
   background-image: 
     linear-gradient(hsla(var(--neon-green), 0.1) 1px, transparent 1px),
@@ -703,7 +724,7 @@
   background-size: 40px 40px;
 }
 
-/* Ensure neon particles are visible */
+/* ── Duplicate Particle Rules (outside @layer for specificity fallback) ── */
 .neon-particle {
   position: absolute;
   width: 3px;
@@ -734,7 +755,7 @@
   }
 }
 
-/* Skip to content link styling */
+/* ── Duplicate Skip-to-Content (outside @layer for specificity fallback) ── */
 .skip-to-content {
   position: absolute;
   top: -40px;
@@ -757,14 +778,15 @@
   outline: none;
 }
 
-/* Ensure smooth transitions */
+/* ── Global Smooth Transitions ──
+ * Applies to all properties that commonly change on interaction. */
 * {
   transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
 
-/* Neon scrollbar styling */
+/* ── Duplicate Scrollbar Rules (outside @layer for specificity fallback) ── */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -786,17 +808,46 @@
   box-shadow: 0 0 20px hsla(var(--neon-green), 0.8);
 }
 
-/* Selection styling */
+/* ── Duplicate Selection Rules (outside @layer for specificity fallback) ── */
 ::selection {
   background: hsla(var(--neon-green), 0.3);
   color: hsl(var(--primary));
   text-shadow: 0 0 10px hsla(var(--neon-green), 0.8);
 }
 
-/* Focus styling */
+/* ── Duplicate Focus Rules (outside @layer for specificity fallback) ── */
 :focus-visible {
   outline: 2px solid hsl(var(--ring));
   outline-offset: 2px;
   border-radius: calc(var(--radius-sm));
   box-shadow: 0 0 0 4px hsla(var(--neon-green), 0.4), 0 0 20px hsla(var(--neon-green), 0.6);
+}
+
+/* ── Mobile Optimizations ──
+ * Reduces glow intensity, scrollbar width, and disables hover lift on
+ * small screens to improve performance and readability. */
+@media (max-width: 640px) {
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .neon-card:hover {
+    transform: none;
+    box-shadow: var(--shadow-neon-sm);
+  }
+
+  .neon-button:hover {
+    transform: none;
+    box-shadow: var(--shadow-neon-md);
+  }
+
+  .hover-scale:hover {
+    transform: none;
+  }
+
+  .neon-text {
+    animation: none;
+    text-shadow: 0 0 5px hsla(var(--neon-green), 0.5);
+  }
 }

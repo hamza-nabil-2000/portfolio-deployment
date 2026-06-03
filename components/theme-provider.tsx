@@ -1,3 +1,12 @@
+/**
+ * ThemeProvider
+ * -------------
+ * Thin wrapper around next-themes that enables dark/light/system
+ * theme switching for the entire application.
+ *
+ * Currently the portfolio uses a single dark cyan theme,
+ * but this provider is kept for future multi-theme support.
+ */
 'use client'
 
 import * as React from 'react'

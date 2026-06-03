@@ -1,8 +1,14 @@
+/**
+ * Default Tailwind CSS v4 theme configuration (oklch-based).
+ * This file provides the baseline Shadcn/UI color tokens.
+ * The active theme overrides live in app/globals.css.
+ */
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
+/* ── Light Mode Tokens ── */
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -39,6 +45,7 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
+/* ── Dark Mode Tokens ── */
 .dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
@@ -74,6 +81,8 @@
   --sidebar-ring: oklch(0.439 0 0);
 }
 
+/* ── Tailwind Theme Mapping ──
+ * Exposes CSS variables as Tailwind theme keys. */
 @theme inline {
   --font-sans: 'Geist', 'Geist Fallback';
   --font-mono: 'Geist Mono', 'Geist Mono Fallback';
@@ -115,6 +124,8 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+/* ── Base Styles ──
+ * Apply theme tokens to the document root. */
 @layer base {
   * {
     @apply border-border outline-ring/50;
