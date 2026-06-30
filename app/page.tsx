@@ -230,6 +230,13 @@ const devSkills = devSkillDefs.map((def) => ({
 export default function Portfolio() {
   const emailDraftUrl =
     "https://mail.google.com/mail/?view=cm&fs=1&to=hamzapk@gmail.com";
+  const address = "CB-1023 Hamza Street, Afshan Colony, Rawalpindi";
+  const mapsUrl = "https://maps.app.goo.gl/bTykdoirGvFGB9Pr9";
+  const rawPhoneNumber = "+92 331 8213810";
+  // Sanitize: remove any alphabetical characters and keep only digits/spaces/plus for display.
+  const phoneNumber = rawPhoneNumber.replace(/[a-zA-Z]/g, "");
+  // Generate tel URL by stripping everything except digits.
+  const phoneTelUrl = `tel:${phoneNumber.replace(/\D/g, "")}`;
 
   // ── UI State ──
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -574,12 +581,12 @@ export default function Portfolio() {
               {/* Profile Picture with Neon Glow Effect */}
               <div className="relative mb-8">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-accent/30 rounded-full blur-2xl animate-pulse"></div>
-                <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 mx-auto rounded-full overflow-hidden border-4 border-primary shadow-neon-lg group">
+                <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 mx-auto rounded-full overflow-hidden border-4 border-primary shadow-neon-lg">
                   <Image
                     src="/pfp.jpeg"
                     alt="Hamza Nabil"
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="object-cover"
                     priority
                   />
                 </div>
@@ -601,25 +608,44 @@ export default function Portfolio() {
                     <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors flex-shrink-0">
                       <Phone size={20} className="text-primary" />
                     </div>
-                    <span className="text-foreground text-sm">
-                      +92 331 8213810
-                    </span>
+                    <a
+                      href={phoneTelUrl}
+                      title="Call"
+                      aria-label={`Call ${phoneNumber}`}
+                      className="relative z-10 text-foreground text-sm hover:text-primary transition-colors cursor-pointer"
+                    >
+                      {phoneNumber}
+                    </a>
                   </div>
                   <div className="flex items-center gap-3 group">
                     <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors flex-shrink-0">
                       <MapPin size={20} className="text-primary" />
                     </div>
-                    <span className="text-foreground text-sm">
-                      CB-1023 Hamza Street, Afshan Colony, Rawalpindi
-                    </span>
+                    <a
+                      href={mapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="Open in Google Maps"
+                      aria-label={`Open ${address} in Google Maps`}
+                      className="relative z-10 text-foreground text-sm hover:text-primary transition-colors cursor-pointer"
+                    >
+                      {address}
+                    </a>
                   </div>
                   <div className="flex items-center gap-3 group">
                     <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors flex-shrink-0">
                       <Mail size={20} className="text-primary" />
                     </div>
-                    <span className="text-foreground text-sm">
+                    <a
+                      href={emailDraftUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="Send Email"
+                      aria-label="Send Email"
+                      className="relative z-10 text-foreground text-sm hover:text-primary transition-colors cursor-pointer"
+                    >
                       hamzapk@gmail.com
-                    </span>
+                    </a>
                   </div>
                 </div>
               </div>
