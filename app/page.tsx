@@ -57,12 +57,20 @@ const projectCards = [
   {
     icon: Code2,
     title: "Automation Work",
-    items: ["Playwright scripts", "TypeScript-based tests", "UI workflow checks"],
+    items: [
+      "Playwright scripts",
+      "TypeScript-based tests",
+      "UI workflow checks",
+    ],
   },
   {
     icon: Layers,
     title: "Academic Project",
-    items: ["DICOM Viewer & Annotator using ReactJS", "SQL Server database integration", "Medical imaging workflow"],
+    items: [
+      "DICOM Viewer & Annotator using ReactJS",
+      "SQL Server database integration",
+      "Medical imaging workflow",
+    ],
   },
 ];
 
@@ -70,7 +78,10 @@ const certifications = [
   { title: "Software Testing / QA", provider: "LinkedIn Learning" },
   { title: "Selenium Essential Training", provider: "LinkedIn Learning" },
   { title: "React Full-Stack Site Development", provider: "LinkedIn Learning" },
-  { title: "Angular: Creating and Hosting a Full-Stack Site", provider: "LinkedIn Learning" },
+  {
+    title: "Angular: Creating and Hosting a Full-Stack Site",
+    provider: "LinkedIn Learning",
+  },
 ];
 
 // Hero description text (included in evidence scanning)
@@ -91,7 +102,7 @@ const aboutTexts = [
 // No hard-coded maxLevel — the score is computed from real mentions.
 interface SkillDef {
   name: string;
-  keywords: string[];     // searched in experience, projects, hero, about
+  keywords: string[]; // searched in experience, projects, hero, about
   certKeywords: string[]; // searched in certification titles
 }
 
@@ -106,16 +117,14 @@ function computeSkillLevel(def: SkillDef): number {
   const expMatches = experienceHighlights.filter(hasMatch).length;
 
   // Project evidence: how many projects mention this skill
-  const projMatches = projectCards.filter((p) =>
-    p.items.some(hasMatch)
-  ).length;
+  const projMatches = projectCards.filter((p) => p.items.some(hasMatch)).length;
 
   // Certification evidence
   const certMatch = certifications.some((c) => hasCertMatch(c.title));
 
   // About / hero / badge presence
   const inAbout = aboutTexts.some(hasMatch);
-  const inHero  = hasMatch(heroText);
+  const inHero = hasMatch(heroText);
   const inBadge = hasMatch(badgeText);
 
   // ── Score calculation (max ≈ 95) ──────────────────────────────────────
@@ -125,42 +134,92 @@ function computeSkillLevel(def: SkillDef): number {
   if (expMatches >= 2) score += 10; // mentioned across multiple duties
 
   // Supporting evidence
-  if (inBadge)          score += 5;
-  if (inHero)           score += 8;
+  if (inBadge) score += 5;
+  if (inHero) score += 8;
   if (projMatches >= 1) score += 7;
-  if (certMatch)        score += 8;
+  if (certMatch) score += 8;
   // About mention with no direct experience = working knowledge (scored separately)
   if (inAbout && expMatches === 0) score += 20;
-  if (inAbout && expMatches >= 1)  score += 5;
+  if (inAbout && expMatches >= 1) score += 5;
 
   return Math.min(95, score);
 }
 
 const qaSkillDefs: SkillDef[] = [
-  { name: "Playwright (TypeScript)", keywords: ["playwright", "typescript", "automation"], certKeywords: [] },
-  { name: "Selenium (Introductory)", keywords: ["selenium"],                               certKeywords: ["selenium"] },
-  { name: "Manual Testing",          keywords: ["manual", "test case"],                    certKeywords: ["testing", "qa"] },
-  { name: "Functional Testing",      keywords: ["functional"],                             certKeywords: ["testing", "qa"] },
-  { name: "Regression Testing",      keywords: ["regression"],                             certKeywords: ["testing", "qa"] },
-  { name: "API Testing",             keywords: ["api"],                                    certKeywords: [] },
-  { name: "UI/UX Testing",           keywords: ["ui", "ux", "workflow", "interface"],     certKeywords: [] },
-  { name: "Non-functional Testing",  keywords: ["non-functional", "performance"],          certKeywords: [] },
-  { name: "Test Case Design",        keywords: ["test case", "design"],                    certKeywords: ["testing", "qa"] },
-  { name: "Defect Reporting & Bug Tracking", keywords: ["defect", "bug"],                 certKeywords: [] },
-  { name: "SDLC & STLC",             keywords: ["sdlc", "stlc", "lifecycle"],              certKeywords: [] },
-  { name: "Agile / Scrum",           keywords: ["agile", "scrum"],                         certKeywords: [] },
+  {
+    name: "Playwright (TypeScript)",
+    keywords: ["playwright", "typescript", "automation"],
+    certKeywords: [],
+  },
+  {
+    name: "Selenium (Introductory)",
+    keywords: ["selenium"],
+    certKeywords: ["selenium"],
+  },
+  {
+    name: "Manual Testing",
+    keywords: ["manual", "test case"],
+    certKeywords: ["testing", "qa"],
+  },
+  {
+    name: "Functional Testing",
+    keywords: ["functional"],
+    certKeywords: ["testing", "qa"],
+  },
+  {
+    name: "Regression Testing",
+    keywords: ["regression"],
+    certKeywords: ["testing", "qa"],
+  },
+  { name: "API Testing", keywords: ["api"], certKeywords: [] },
+  {
+    name: "UI/UX Testing",
+    keywords: ["ui", "ux", "workflow", "interface"],
+    certKeywords: [],
+  },
+  {
+    name: "Non-functional Testing",
+    keywords: ["non-functional", "performance"],
+    certKeywords: [],
+  },
+  {
+    name: "Test Case Design",
+    keywords: ["test case", "design"],
+    certKeywords: ["testing", "qa"],
+  },
+  {
+    name: "Defect Reporting & Bug Tracking",
+    keywords: ["defect", "bug"],
+    certKeywords: [],
+  },
+  {
+    name: "SDLC & STLC",
+    keywords: ["sdlc", "stlc", "lifecycle"],
+    certKeywords: [],
+  },
+  { name: "Agile / Scrum", keywords: ["agile", "scrum"], certKeywords: [] },
 ];
 
 const devSkillDefs: SkillDef[] = [
-  { name: "ReactJS / NextJS", keywords: ["react", "nextjs", "dicom"],  certKeywords: ["react"] },
-  { name: "Angular",          keywords: ["angular"],                    certKeywords: ["angular"] },
-  { name: "HTML5 / CSS3",     keywords: ["html", "css"],               certKeywords: [] },
-  { name: "PHP",              keywords: ["php"],                        certKeywords: [] },
-  { name: "SQL Queries",      keywords: ["sql"],                        certKeywords: [] },
+  {
+    name: "ReactJS / NextJS",
+    keywords: ["react", "nextjs", "dicom"],
+    certKeywords: ["react"],
+  },
+  { name: "Angular", keywords: ["angular"], certKeywords: ["angular"] },
+  { name: "HTML5 / CSS3", keywords: ["html", "css"], certKeywords: [] },
+  { name: "PHP", keywords: ["php"], certKeywords: [] },
+  { name: "SQL Queries", keywords: ["sql"], certKeywords: [] },
 ];
 
-const qaSkills  = qaSkillDefs.map((def) => ({ name: def.name, level: computeSkillLevel(def) }));
-const devSkills = devSkillDefs.map((def) => ({ name: def.name, level: computeSkillLevel(def) }));
+const qaSkills = qaSkillDefs.map((def) => ({
+  name: def.name,
+  level: computeSkillLevel(def),
+}));
+const devSkills = devSkillDefs.map((def) => ({
+  name: def.name,
+  level: computeSkillLevel(def),
+}));
 
 /**
  * Main Portfolio Component
@@ -284,7 +343,7 @@ export default function Portfolio() {
   useEffect(() => {
     const targetStats = {
       systems: projectCards[0].items.length, // derived from Healthcare Testing project items
-      certifications: certifications.length,  // derived from certifications array
+      certifications: certifications.length, // derived from certifications array
       experience: calcYearsOfExperience(),
       gpa: 3.51,
     };
@@ -479,11 +538,13 @@ export default function Portfolio() {
               </p>
               <div className="space-y-3">
                 <p className="text-base sm:text-lg text-foreground/80 leading-relaxed animate-slide-in animation-delay-200 text-justify">
-                  Quality Assurance Engineer with {calcYearsOfExperience()} years of experience in
-                  manual and automation testing. Proficient in Playwright (TypeScript),
-                  functional and regression testing, test case design, and defect reporting.
-                  Possess strong analytical and problem-solving skills, complemented by a BS
-                  in Information Technology and hands-on experience in healthcare applications.
+                  Quality Assurance Engineer with {calcYearsOfExperience()}{" "}
+                  years of experience in manual and automation testing.
+                  Proficient in Playwright (TypeScript), functional and
+                  regression testing, test case design, and defect reporting.
+                  Possess strong analytical and problem-solving skills,
+                  complemented by a BS in Information Technology and hands-on
+                  experience in healthcare applications.
                 </p>
               </div>
               <div className="flex flex-wrap gap-4 pt-4 animate-slide-in animation-delay-400">
@@ -585,16 +646,18 @@ export default function Portfolio() {
             <div className="p-2 md:p-3 rounded-lg bg-primary/10">
               <Terminal className="text-primary w-7 h-7 md:w-8 md:h-8" />
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold neon-text-gradient">About Me</h2>
+            <h2 className="text-3xl md:text-4xl font-bold neon-text-gradient">
+              About Me
+            </h2>
           </div>
           <div className="grid md:grid-cols-2 gap-8 md:gap-12">
             <div className="space-y-4">
               <p className="text-base sm:text-lg text-foreground/80 leading-relaxed text-justify">
                 I am a Quality Assurance Engineer focused on improving software
                 quality through structured Manual Testing and Practical
-                Automation. I possess strong analytical and problem-solving skills,
-                complemented by hands-on experience in healthcare applications.
-                My experience includes Playwright with TypeScript,
+                Automation. I possess strong analytical and problem-solving
+                skills, complemented by hands-on experience in healthcare
+                applications. My experience includes Playwright with TypeScript,
                 Functional and Regression testing, Test Case Design, and Defect
                 Reporting.
               </p>
@@ -609,10 +672,10 @@ export default function Portfolio() {
             </div>
             <div className="space-y-4">
               <p className="text-base sm:text-lg text-foreground/80 leading-relaxed text-justify">
-                I hold a BS in Information Technology with a 3.51 GPA from
-                PMAS Arid Agriculture University and currently
-                work at CHI Technologies in Islamabad. Alongside QA work, I also
-                have working knowledge of HTML5, CSS3, PHP, Angular, and
+                I hold a BS in Information Technology with a 3.51 GPA from PMAS
+                Arid Agriculture University and currently work at CHI
+                Technologies in Islamabad. Alongside QA work, I also have
+                working knowledge of HTML5, CSS3, PHP, Angular, and
                 ReactJS/NextJS.
               </p>
               {/* <div className="flex items-center gap-3 text-primary">
@@ -639,25 +702,33 @@ export default function Portfolio() {
               <div className="text-3xl sm:text-4xl md:text-5xl font-bold neon-text">
                 {stats.systems}
               </div>
-              <div className="text-sm sm:text-base text-muted-foreground">Healthcare Systems</div>
+              <div className="text-sm sm:text-base text-muted-foreground">
+                Healthcare Systems
+              </div>
             </div>
             <div className="text-center space-y-2">
               <div className="text-3xl sm:text-4xl md:text-5xl font-bold neon-text">
                 {stats.certifications}
               </div>
-              <div className="text-sm sm:text-base text-muted-foreground">Certifications</div>
+              <div className="text-sm sm:text-base text-muted-foreground">
+                Certifications
+              </div>
             </div>
             <div className="text-center space-y-2">
               <div className="text-3xl sm:text-4xl md:text-5xl font-bold neon-text">
                 {stats.experience}
               </div>
-              <div className="text-sm sm:text-base text-muted-foreground">Years Experience</div>
+              <div className="text-sm sm:text-base text-muted-foreground">
+                Years Experience
+              </div>
             </div>
             <div className="text-center space-y-2">
               <div className="text-3xl sm:text-4xl md:text-5xl font-bold neon-text">
                 {stats.gpa}
               </div>
-              <div className="text-sm sm:text-base text-muted-foreground">CGPA</div>
+              <div className="text-sm sm:text-base text-muted-foreground">
+                CGPA
+              </div>
             </div>
           </div>
         </div>
@@ -755,45 +826,6 @@ export default function Portfolio() {
                 viewing and annotating DICOM files using ReactJS and SQL Server.
               </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Projects Section ── */}
-      <section
-        id="projects"
-        ref={projectsRef}
-        className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 border-t border-border/50 scroll-reveal"
-      >
-        <div className="max-w-6xl mx-auto">
-          <div className="flex items-center gap-3 mb-8 md:mb-12">
-            <div className="p-2 md:p-3 rounded-lg bg-primary/10">
-              <Zap className="text-primary w-7 h-7 md:w-8 md:h-8" />
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold neon-text-gradient">
-              Featured Projects
-            </h2>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {projectCards.map((project, idx) => (
-              <div key={idx} className="neon-card p-5 md:p-6 group hover-scale">
-                <div className="p-2 md:p-3 rounded-lg bg-primary/10 w-fit mb-4 group-hover:bg-primary/20 transition-colors">
-                  <project.icon className="text-primary" size={32} />
-                </div>
-                <h3 className="text-xl font-bold mb-4">{project.title}</h3>
-                <ul className="space-y-2">
-                  {project.items.map((item, i) => (
-                    <li
-                      key={i}
-                      className="flex items-center gap-2 text-foreground/80"
-                    >
-                      <Star size={14} className="text-primary" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
           </div>
         </div>
       </section>
