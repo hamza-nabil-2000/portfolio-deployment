@@ -697,15 +697,7 @@ export default function Portfolio() {
         className="py-12 md:py-16 px-4 sm:px-6 lg:px-8 border-t border-border/50 bg-gradient-to-br from-primary/5 to-accent/5"
       >
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-            <div className="text-center space-y-2">
-              <div className="text-3xl sm:text-4xl md:text-5xl font-bold neon-text">
-                {stats.systems}
-              </div>
-              <div className="text-sm sm:text-base text-muted-foreground">
-                Healthcare Systems
-              </div>
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-8">
             <div className="text-center space-y-2">
               <div className="text-3xl sm:text-4xl md:text-5xl font-bold neon-text">
                 {stats.certifications}
@@ -769,7 +761,7 @@ export default function Portfolio() {
                     </p>
                   </div>
                   <span className="text-sm text-primary border border-primary/30 px-4 py-2 rounded-full bg-primary/5">
-                    Oct 2024 - Present
+                    October 2024 - Present
                   </span>
                 </div>
                 <ul className="space-y-4">
@@ -811,7 +803,7 @@ export default function Portfolio() {
                 </p>
               </div>
               <span className="text-sm text-primary border border-primary/30 px-4 py-2 rounded-full bg-primary/5">
-                2020–2024
+                February 2020 – February 2024
               </span>
             </div>
             <p className="text-foreground/80 mb-4 text-lg">
