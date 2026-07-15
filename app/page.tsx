@@ -253,7 +253,7 @@ export default function Portfolio() {
   const heroRef = useRef<HTMLElement>(null);
   const aboutRef = useRef<HTMLElement>(null);
   const experienceRef = useRef<HTMLElement>(null);
-  const projectsRef = useRef<HTMLElement>(null);
+  const educationRef = useRef<HTMLElement>(null);
   const skillsRef = useRef<HTMLElement>(null);
   const contactRef = useRef<HTMLElement>(null);
   const statsRef = useRef<HTMLElement>(null);
@@ -307,7 +307,7 @@ export default function Portfolio() {
         { id: "hero", ref: heroRef },
         { id: "about", ref: aboutRef },
         { id: "experience", ref: experienceRef },
-        { id: "projects", ref: projectsRef },
+        { id: "education", ref: educationRef },
         { id: "skills", ref: skillsRef },
         { id: "contact", ref: contactRef },
       ];
@@ -465,7 +465,7 @@ export default function Portfolio() {
 
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center gap-8">
-              {["about", "experience", "projects", "skills", "contact"].map(
+              {["about", "experience", "education", "skills", "contact"].map(
                 (section) => (
                   <button
                     key={section}
@@ -501,7 +501,7 @@ export default function Portfolio() {
           {/* Mobile Menu */}
           {isMenuOpen && (
             <div className="md:hidden pb-4 space-y-2 animate-slide-down">
-              {["about", "experience", "projects", "skills", "contact"].map(
+              {["about", "experience", "education", "skills", "contact"].map(
                 (section) => (
                   <button
                     key={section}
@@ -815,7 +815,11 @@ export default function Portfolio() {
       </section>
 
       {/* ── Education Section ── */}
-      <section className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 border-t border-border/50 scroll-reveal">
+      <section
+        id="education"
+        ref={educationRef}
+        className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 border-t border-border/50 scroll-reveal"
+      >
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center gap-3 mb-8 md:mb-12">
             <div className="p-2 md:p-3 rounded-lg bg-primary/10">
