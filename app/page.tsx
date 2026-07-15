@@ -455,16 +455,24 @@ export default function Portfolio() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex-shrink-0">
-              <h1
-                className="text-2xl font-bold neon-text-gradient cursor-pointer"
+              {/* Profile picture as navbar logo on all screen sizes */}
+              <button
                 onClick={scrollToTop}
+                className="w-10 h-10 rounded-full overflow-hidden border-2 border-primary shadow-neon-sm hover:shadow-neon-lg transition-all duration-300"
+                aria-label="Scroll to top"
               >
-                HN
-              </h1>
+                <Image
+                  src="/pfp.jpeg"
+                  alt="Hamza Nabil"
+                  width={40}
+                  height={40}
+                  className="object-cover w-full h-full"
+                />
+              </button>
             </div>
 
-            {/* Desktop Menu */}
-            <div className="hidden md:flex items-center gap-4 lg:gap-8">
+            {/* Desktop Menu — only visible on large screens */}
+            <div className="hidden lg:flex items-center gap-6 xl:gap-8">
               {["home", "about", "experience", "education", "skills", "contact"].map(
                 (section) => (
                   <button
@@ -487,8 +495,8 @@ export default function Portfolio() {
               )}
             </div>
 
-            {/* Mobile Menu Button */}
-            <div className="md:hidden">
+            {/* Mobile / Tablet Menu Button */}
+            <div className="lg:hidden">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="text-foreground hover:text-primary transition-colors"
@@ -498,9 +506,9 @@ export default function Portfolio() {
             </div>
           </div>
 
-          {/* Mobile Menu */}
+          {/* Mobile / Tablet Dropdown Menu */}
           {isMenuOpen && (
-            <div className="md:hidden pb-4 space-y-2 animate-slide-down">
+            <div className="lg:hidden pb-4 space-y-2 animate-slide-down">
               {["home", "about", "experience", "education", "skills", "contact"].map(
                 (section) => (
                   <button
@@ -549,13 +557,13 @@ export default function Portfolio() {
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Left Column - Text Content */}
             <div className="space-y-6 order-2 md:order-1">
+              <h1 className="hidden md:block text-5xl md:text-7xl font-bold leading-tight">
+                Hamza <span className="neon-text">Nabil</span>
+              </h1>
               <div className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm animate-glow-pulse">
                 <Sparkles size={16} />
                 <span>QA Engineer (Manual & Automation)</span>
               </div>
-              <h1 className="hidden md:block text-5xl md:text-7xl font-bold leading-tight">
-                Hamza <span className="neon-text">Nabil</span>
-              </h1>
               <p className="text-lg sm:text-xl text-muted-foreground animate-slide-in text-justify">
                 Delivering reliable software through thoughtful manual and
                 automation testing
@@ -595,8 +603,8 @@ export default function Portfolio() {
 
             {/* Right Column - Profile Picture and Contact Info */}
             <div className="order-1 md:order-2 flex flex-col justify-center h-full">
-              {/* Profile Picture with Neon Glow Effect */}
-              <div className="relative mb-8">
+              {/* Profile Picture — hidden on mobile (shown in navbar instead) */}
+              <div className="relative mb-8 hidden md:block">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-accent/30 rounded-full blur-2xl animate-pulse"></div>
                 <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 mx-auto rounded-full overflow-hidden border-4 border-primary shadow-neon-lg">
                   <Image
