@@ -28,6 +28,8 @@ import {
   Zap,
   Star,
   ArrowUp,
+  GraduationCap,
+  Wrench,
 } from "lucide-react";
 
 // ── Experience Calculation ──
@@ -815,9 +817,14 @@ export default function Portfolio() {
       {/* ── Education Section ── */}
       <section className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 border-t border-border/50 scroll-reveal">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8 md:mb-12 neon-text-gradient">
-            Education
-          </h2>
+          <div className="flex items-center gap-3 mb-8 md:mb-12">
+            <div className="p-2 md:p-3 rounded-lg bg-primary/10">
+              <GraduationCap className="text-primary w-7 h-7 md:w-8 md:h-8" />
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold neon-text-gradient">
+              Education
+            </h2>
+          </div>
           <div className="neon-card p-6 md:p-8 group">
             <div className="flex flex-col sm:flex-row sm:flex-wrap items-start justify-between mb-4 md:mb-6 gap-3 sm:gap-4">
               <div>
@@ -856,9 +863,14 @@ export default function Portfolio() {
         className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 border-t border-border/50 scroll-reveal"
       >
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8 md:mb-12 neon-text-gradient">
-            Technical Skills
-          </h2>
+          <div className="flex items-center gap-3 mb-8 md:mb-12">
+            <div className="p-2 md:p-3 rounded-lg bg-primary/10">
+              <Wrench className="text-primary w-7 h-7 md:w-8 md:h-8" />
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold neon-text-gradient">
+              Technical Skills
+            </h2>
+          </div>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="neon-card p-5 sm:p-6 md:p-8">
               <h3 className="text-lg md:text-xl font-bold text-primary mb-4 md:mb-6">
@@ -945,8 +957,16 @@ export default function Portfolio() {
         ref={contactRef}
         className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 border-t border-border/50 scroll-reveal"
       >
-        <div className="max-w-6xl mx-auto text-center">
-          <div className="neon-card p-6 sm:p-8 md:p-12">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex items-center gap-3 mb-8 md:mb-12">
+            <div className="p-2 md:p-3 rounded-lg bg-primary/10">
+              <Mail className="text-primary w-7 h-7 md:w-8 md:h-8" />
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold neon-text-gradient">
+              Contact
+            </h2>
+          </div>
+          <div className="neon-card p-6 sm:p-8 md:p-12 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 md:mb-6 neon-text-gradient">
               Get In Touch
             </h2>
