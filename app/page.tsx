@@ -243,7 +243,7 @@ export default function Portfolio() {
   // ── UI State ──
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState("hero");
+  const [activeSection, setActiveSection] = useState("home");
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -304,7 +304,7 @@ export default function Portfolio() {
 
       // Determine which section is currently centered in the viewport
       const sections = [
-        { id: "hero", ref: heroRef },
+        { id: "home", ref: heroRef },
         { id: "about", ref: aboutRef },
         { id: "experience", ref: experienceRef },
         { id: "education", ref: educationRef },
@@ -465,7 +465,7 @@ export default function Portfolio() {
 
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center gap-8">
-              {["about", "experience", "education", "skills", "contact"].map(
+              {["home", "about", "experience", "education", "skills", "contact"].map(
                 (section) => (
                   <button
                     key={section}
@@ -501,7 +501,7 @@ export default function Portfolio() {
           {/* Mobile Menu */}
           {isMenuOpen && (
             <div className="md:hidden pb-4 space-y-2 animate-slide-down">
-              {["about", "experience", "education", "skills", "contact"].map(
+              {["home", "about", "experience", "education", "skills", "contact"].map(
                 (section) => (
                   <button
                     key={section}
@@ -520,7 +520,7 @@ export default function Portfolio() {
       {/* ── Hero Section ──
        * Intro, profile picture with neon glow, and contact info card. */}
       <section
-        id="hero"
+        id="home"
         ref={heroRef}
         className="pt-24 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden min-h-[85vh] sm:min-h-[90vh] flex items-center"
       >
