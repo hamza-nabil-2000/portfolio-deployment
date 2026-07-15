@@ -464,7 +464,7 @@ export default function Portfolio() {
             </div>
 
             {/* Desktop Menu */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden md:flex items-center gap-4 lg:gap-8">
               {["home", "about", "experience", "education", "skills", "contact"].map(
                 (section) => (
                   <button
@@ -506,7 +506,11 @@ export default function Portfolio() {
                   <button
                     key={section}
                     onClick={() => scrollToSection(section)}
-                    className="block w-full text-left px-4 py-3 text-foreground hover:text-primary hover:bg-primary/10 rounded-lg transition-all duration-200"
+                    className={`block w-full text-left px-4 py-3 rounded-lg transition-all duration-200 border-l-2 ${
+                      activeSection === section
+                        ? "text-primary bg-primary/10 border-primary font-semibold"
+                        : "text-foreground hover:text-primary hover:bg-primary/10 border-transparent"
+                    }`}
                   >
                     {section.charAt(0).toUpperCase() + section.slice(1)}
                   </button>
@@ -531,14 +535,25 @@ export default function Portfolio() {
         </div>
 
         <div className="max-w-6xl mx-auto relative animate-fade-in-up">
+          {/* ── Mobile-only Name & Badge (shown above image on small screens) ── */}
+          <div className="md:hidden text-center mb-6 space-y-3">
+            <h1 className="text-4xl font-bold leading-tight">
+              Hamza <span className="neon-text">Nabil</span>
+            </h1>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm animate-glow-pulse">
+              <Sparkles size={16} />
+              <span>QA Engineer (Manual & Automation)</span>
+            </div>
+          </div>
+
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Left Column - Text Content */}
             <div className="space-y-6 order-2 md:order-1">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm animate-glow-pulse">
+              <div className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm animate-glow-pulse">
                 <Sparkles size={16} />
                 <span>QA Engineer (Manual & Automation)</span>
               </div>
-              <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+              <h1 className="hidden md:block text-5xl md:text-7xl font-bold leading-tight">
                 Hamza <span className="neon-text">Nabil</span>
               </h1>
               <p className="text-lg sm:text-xl text-muted-foreground animate-slide-in text-justify">
@@ -556,7 +571,7 @@ export default function Portfolio() {
                   experience in healthcare applications.
                 </p>
               </div>
-              <div className="flex flex-wrap gap-4 pt-4 animate-slide-in animation-delay-400">
+              <div className="flex flex-wrap gap-3 sm:gap-4 pt-4 animate-slide-in animation-delay-400">
                 <a
                   href="https://linkedin.com/in/hamza-nabeel"
                   target="_blank"
@@ -725,7 +740,7 @@ export default function Portfolio() {
         className="py-12 md:py-16 px-4 sm:px-6 lg:px-8 border-t border-border/50 bg-gradient-to-br from-primary/5 to-accent/5"
       >
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-8">
+          <div className="grid grid-cols-3 gap-4 md:gap-8">
             <div className="text-center space-y-2">
               <div className="text-3xl sm:text-4xl md:text-5xl font-bold neon-text">
                 {stats.certifications}
@@ -883,9 +898,9 @@ export default function Portfolio() {
               <div className="space-y-4">
                 {qaSkills.map((skill) => (
                   <div key={skill.name}>
-                    <div className="flex justify-between mb-2">
-                      <span className="text-foreground/80">{skill.name}</span>
-                      <span className="text-primary">{skill.level}%</span>
+                    <div className="flex justify-between mb-2 gap-2 flex-wrap">
+                      <span className="text-foreground/80 text-sm sm:text-base">{skill.name}</span>
+                      <span className="text-primary text-sm sm:text-base flex-shrink-0">{skill.level}%</span>
                     </div>
                     <div className="h-2 bg-muted rounded-full overflow-hidden">
                       <div
@@ -905,9 +920,9 @@ export default function Portfolio() {
               <div className="space-y-4">
                 {devSkills.map((skill) => (
                   <div key={skill.name}>
-                    <div className="flex justify-between mb-2">
-                      <span className="text-foreground/80">{skill.name}</span>
-                      <span className="text-accent">{skill.level}%</span>
+                    <div className="flex justify-between mb-2 gap-2 flex-wrap">
+                      <span className="text-foreground/80 text-sm sm:text-base">{skill.name}</span>
+                      <span className="text-accent text-sm sm:text-base flex-shrink-0">{skill.level}%</span>
                     </div>
                     <div className="h-2 bg-muted rounded-full overflow-hidden">
                       <div
