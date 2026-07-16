@@ -244,9 +244,10 @@ export default function Portfolio() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [cursorHover, setCursorHover] = useState(false);
 
   // ── Section Refs ──
   // Used to calculate which section is currently in view.
@@ -255,6 +256,7 @@ export default function Portfolio() {
   const experienceRef = useRef<HTMLElement>(null);
   const educationRef = useRef<HTMLElement>(null);
   const skillsRef = useRef<HTMLElement>(null);
+  const certificationsRef = useRef<HTMLElement>(null);
   const contactRef = useRef<HTMLElement>(null);
   const statsRef = useRef<HTMLElement>(null);
   const hasAnimated = useRef(false);
@@ -309,26 +311,46 @@ export default function Portfolio() {
         { id: "experience", ref: experienceRef },
         { id: "education", ref: educationRef },
         { id: "skills", ref: skillsRef },
+        { id: "certifications", ref: certificationsRef },
         { id: "contact", ref: contactRef },
       ];
 
-      // Check if we are at the bottom of the page
+      // Highlight the section that contains the nav offset line
+      const scrollOffset = 120;
+      let active = "home";
+
       if (
         window.innerHeight + scrollY >=
         document.documentElement.scrollHeight - 50
       ) {
-        setActiveSection("contact");
+        active = "contact";
       } else {
+        let found = false;
         for (const section of sections) {
           if (section.ref.current) {
             const rect = section.ref.current.getBoundingClientRect();
-            if (rect.top <= 100 && rect.bottom >= 100) {
-              setActiveSection(section.id);
+            if (rect.top <= scrollOffset && rect.bottom >= scrollOffset) {
+              active = section.id;
+              found = true;
               break;
             }
           }
         }
+
+        // Between sections: keep the last section that has scrolled past the offset
+        if (!found) {
+          for (const section of sections) {
+            if (section.ref.current) {
+              const rect = section.ref.current.getBoundingClientRect();
+              if (rect.top <= scrollOffset) {
+                active = section.id;
+              }
+            }
+          }
+        }
       }
+
+      setActiveSection(active);
     };
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -425,15 +447,37 @@ export default function Portfolio() {
   // ── Render ──
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
-      {/* ── Custom Cursor ──
-       * A cyan ring that follows the mouse on desktop. */}
+      {/* ── Custom Cursor ── */}
       <div
-        className="fixed w-8 h-8 rounded-full border-2 border-primary pointer-events-none z-[100] transition-transform duration-100 ease-out hidden lg:block"
+        className="fixed pointer-events-none z-[100] hidden lg:block"
         style={{
-          transform: `translate(${mousePosition.x - 16}px, ${mousePosition.y - 16}px)`,
-          boxShadow: "0 0 20px hsla(var(--neon-green), 0.5)",
+          transform: `translate(${mousePosition.x - (cursorHover ? 28 : 20)}px, ${mousePosition.y - (cursorHover ? 28 : 20)}px) scale(${cursorHover ? 1.8 : 1})`,
+          transition: "transform 0.15s ease-out",
         }}
-      />
+      >
+        <div
+          className="w-10 h-10 rounded-full border-2"
+          style={{
+            borderColor: cursorHover
+              ? "hsl(198 96% 30%)"
+              : "hsl(198 96% 53%)",
+            boxShadow: cursorHover
+              ? "0 0 25px hsla(var(--neon-green), 0.7)"
+              : "0 0 20px hsla(var(--neon-green), 0.5)",
+          }}
+        />
+        <div
+          className="absolute top-1/2 left-1/2 w-2 h-2 rounded-full -translate-x-1/2 -translate-y-1/2"
+          style={{
+            backgroundColor: cursorHover
+              ? "hsl(198 96% 30%)"
+              : "hsl(198 96% 53%)",
+            boxShadow: cursorHover
+              ? "0 0 12px hsla(var(--neon-green), 1)"
+              : "0 0 8px hsla(var(--neon-green), 0.8)",
+          }}
+        />
+      </div>
 
       {/* ── Scroll Progress Bar ──
        * Thin gradient bar at the very top showing reading progress. */}
@@ -479,18 +523,21 @@ export default function Portfolio() {
                 "experience",
                 "education",
                 "skills",
+                "certifications",
                 "contact",
               ].map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
-                  className={`relative text-foreground hover:text-primary transition-all duration-300 group ${
+                  onMouseEnter={() => setCursorHover(true)}
+                  onMouseLeave={() => setCursorHover(false)}
+                  className={`relative pb-1 text-foreground hover:text-primary transition-all duration-300 group cursor-pointer ${
                     activeSection === section ? "text-primary" : ""
                   }`}
                 >
                   {section.charAt(0).toUpperCase() + section.slice(1)}
                   <span
-                    className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-300 ${
+                    className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-300 ${
                       activeSection === section
                         ? "w-full"
                         : "w-0 group-hover:w-full"
@@ -504,7 +551,9 @@ export default function Portfolio() {
             <div className="lg:hidden">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-foreground hover:text-primary transition-colors"
+                onMouseEnter={() => setCursorHover(true)}
+                onMouseLeave={() => setCursorHover(false)}
+                className="text-foreground hover:text-primary transition-colors cursor-pointer"
               >
                 {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
               </button>
@@ -520,12 +569,15 @@ export default function Portfolio() {
                 "experience",
                 "education",
                 "skills",
+                "certifications",
                 "contact",
               ].map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
-                  className={`block w-full text-left px-4 py-3 rounded-lg transition-all duration-200 border-l-2 ${
+                  onMouseEnter={() => setCursorHover(true)}
+                  onMouseLeave={() => setCursorHover(false)}
+                  className={`block w-full text-left px-4 py-3 rounded-lg transition-all duration-200 border-l-2 cursor-pointer ${
                     activeSection === section
                       ? "text-primary bg-primary/10 border-primary font-semibold"
                       : "text-foreground hover:text-primary hover:bg-primary/10 border-transparent"
@@ -594,7 +646,9 @@ export default function Portfolio() {
                   href="https://linkedin.com/in/hamza-nabeel"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-primary text-primary hover:bg-primary/10 transition-all duration-300 hover:shadow-neon-sm"
+                  className="neon-button inline-flex items-center gap-2"
+                  onMouseEnter={() => setCursorHover(true)}
+                  onMouseLeave={() => setCursorHover(false)}
                 >
                   <Linkedin size={20} />
                   LINKEDIN
@@ -603,7 +657,9 @@ export default function Portfolio() {
                   href={emailDraftUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-primary text-primary hover:bg-primary/10 transition-all duration-300 hover:shadow-neon-sm"
+                  className="neon-button inline-flex items-center gap-2"
+                  onMouseEnter={() => setCursorHover(true)}
+                  onMouseLeave={() => setCursorHover(false)}
                 >
                   <Mail size={20} />
                   EMAIL ME
@@ -612,7 +668,9 @@ export default function Portfolio() {
                   href="https://wa.me/03318213810"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-primary text-primary hover:bg-primary/10 transition-all duration-300 hover:shadow-neon-sm"
+                  className="neon-button inline-flex items-center gap-2"
+                  onMouseEnter={() => setCursorHover(true)}
+                  onMouseLeave={() => setCursorHover(false)}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -655,7 +713,10 @@ export default function Portfolio() {
               <div className="relative animate-scale-in animation-delay-600">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl blur-3xl animate-pulse"></div>
                 <div className="relative neon-card p-6 space-y-4">
-                  <div className="flex items-center gap-3 group">
+                  <div className="flex items-center gap-3 group cursor-pointer"
+                    onMouseEnter={() => setCursorHover(true)}
+                    onMouseLeave={() => setCursorHover(false)}
+                  >
                     <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors flex-shrink-0">
                       <Phone size={20} className="text-primary" />
                     </div>
@@ -663,12 +724,15 @@ export default function Portfolio() {
                       href={phoneTelUrl}
                       title="Call"
                       aria-label={`Call ${phoneNumber}`}
-                      className="relative z-10 text-foreground text-sm hover:text-primary transition-colors cursor-pointer"
+                      className="relative z-10 text-foreground text-sm hover:text-primary transition-colors"
                     >
                       {phoneNumber}
                     </a>
                   </div>
-                  <div className="flex items-center gap-3 group">
+                  <div className="flex items-center gap-3 group cursor-pointer"
+                    onMouseEnter={() => setCursorHover(true)}
+                    onMouseLeave={() => setCursorHover(false)}
+                  >
                     <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors flex-shrink-0">
                       <MapPin size={20} className="text-primary" />
                     </div>
@@ -678,12 +742,15 @@ export default function Portfolio() {
                       rel="noopener noreferrer"
                       title="Open in Google Maps"
                       aria-label={`Open ${address} in Google Maps`}
-                      className="relative z-10 text-foreground text-sm hover:text-primary transition-colors cursor-pointer"
+                      className="relative z-10 text-foreground text-sm hover:text-primary transition-colors"
                     >
                       {address}
                     </a>
                   </div>
-                  <div className="flex items-center gap-3 group">
+                  <div className="flex items-center gap-3 group cursor-pointer"
+                    onMouseEnter={() => setCursorHover(true)}
+                    onMouseLeave={() => setCursorHover(false)}
+                  >
                     <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors flex-shrink-0">
                       <Mail size={20} className="text-primary" />
                     </div>
@@ -693,7 +760,7 @@ export default function Portfolio() {
                       rel="noopener noreferrer"
                       title="Send Email"
                       aria-label="Send Email"
-                      className="relative z-10 text-foreground text-sm hover:text-primary transition-colors cursor-pointer"
+                      className="relative z-10 text-foreground text-sm hover:text-primary transition-colors"
                     >
                       hamzapk@gmail.com
                     </a>
@@ -981,7 +1048,11 @@ export default function Portfolio() {
       </section>
 
       {/* ── Certifications Section ── */}
-      <section className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 border-t border-border/50 scroll-reveal">
+      <section
+        id="certifications"
+        ref={certificationsRef}
+        className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 border-t border-border/50 scroll-reveal"
+      >
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center gap-3 mb-8 md:mb-12">
             <div className="p-2 md:p-3 rounded-lg bg-primary/10">
@@ -1042,7 +1113,9 @@ export default function Portfolio() {
                 href={emailDraftUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-lg border border-primary text-primary hover:bg-primary/10 transition-all duration-300 hover:shadow-neon-sm text-base sm:text-lg font-semibold"
+                className="neon-button inline-flex items-center gap-2 text-lg"
+                onMouseEnter={() => setCursorHover(true)}
+                onMouseLeave={() => setCursorHover(false)}
               >
                 <Mail size={24} />
                 EMAIL ME
@@ -1051,7 +1124,9 @@ export default function Portfolio() {
                 href="https://wa.me/03318213810"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-lg border border-primary text-primary hover:bg-primary/10 transition-all duration-300 hover:shadow-neon-sm text-base sm:text-lg font-semibold"
+                className="neon-button inline-flex items-center gap-2 text-lg"
+                onMouseEnter={() => setCursorHover(true)}
+                onMouseLeave={() => setCursorHover(false)}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -1067,7 +1142,9 @@ export default function Portfolio() {
                 href="https://linkedin.com/in/hamza-nabeel"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative z-10 inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-lg border border-primary text-primary hover:bg-primary/10 transition-all duration-300 hover:shadow-neon-sm text-base sm:text-lg font-semibold"
+                className="neon-button inline-flex items-center gap-2 text-lg"
+                onMouseEnter={() => setCursorHover(true)}
+                onMouseLeave={() => setCursorHover(false)}
               >
                 <Linkedin size={24} />
                 LINKEDIN
@@ -1088,7 +1165,9 @@ export default function Portfolio() {
               href="https://linkedin.com/in/hamza-nabeel"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-primary transition-all duration-300 hover:scale-110 hover:shadow-neon-sm"
+              onMouseEnter={() => setCursorHover(true)}
+              onMouseLeave={() => setCursorHover(false)}
+              className="hover:text-primary transition-all duration-300 hover:scale-110 hover:shadow-neon-sm cursor-pointer"
             >
               <Linkedin size={20} />
             </a>
@@ -1096,7 +1175,9 @@ export default function Portfolio() {
               href="https://wa.me/03318213810"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-primary transition-all duration-300 hover:scale-110 hover:shadow-neon-sm"
+              onMouseEnter={() => setCursorHover(true)}
+              onMouseLeave={() => setCursorHover(false)}
+              className="hover:text-primary transition-all duration-300 hover:scale-110 hover:shadow-neon-sm cursor-pointer"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -1112,7 +1193,9 @@ export default function Portfolio() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Email Me"
-              className="hover:text-primary transition-all duration-300 hover:scale-110"
+              onMouseEnter={() => setCursorHover(true)}
+              onMouseLeave={() => setCursorHover(false)}
+              className="hover:text-primary transition-all duration-300 hover:scale-110 cursor-pointer"
             >
               <Mail size={20} />
             </a>
