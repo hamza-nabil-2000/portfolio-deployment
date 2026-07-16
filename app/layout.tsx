@@ -1,14 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Plus_Jakarta_Sans, Fira_Code } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
+import Cursor from "@/components/cursor";
 import "./globals.css";
 
-/**
- * Load three font families:
- * 1. Inter           – clean sans-serif for body text
- * 2. Plus Jakarta Sans – modern sans-serif for headings
- * 3. Fira Code       – monospace for code snippets
- */
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -30,10 +27,6 @@ const firaCode = Fira_Code({
   weight: ["300", "400", "500", "600", "700"],
 });
 
-/**
- * Next.js Metadata API – controls <head> tags for SEO and social sharing.
- * Includes OpenGraph, Twitter Cards, icons, and theme colors.
- */
 export const metadata: Metadata = {
   title: {
     default: "Hamza Nabil - QA Engineer Portfolio",
@@ -121,7 +114,6 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "your-google-verification-code",
-    // Add other verification codes as needed
   },
   category: "technology",
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://hamzanabil.com"),
@@ -133,10 +125,6 @@ export const metadata: Metadata = {
   },
 };
 
-/**
- * Viewport configuration.
- * Theme colors match the new cyan palette derived from the profile picture.
- */
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
@@ -166,11 +154,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
       </head>
-      {/* ── Body ──
-       * Light-mode gradient fallback using sky/cyan/blue tones.
-       * The active dark theme is controlled by app/globals.css. */}
-      <body className="font-sans antialiased bg-gradient-to-br from-sky-50 via-cyan-50/30 to-blue-50/20 text-slate-800 min-h-screen">
-        {/* ── Skip-to-content link for accessibility ── */}
+      <body className="font-sans antialiased min-h-screen">
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-sky-600 focus:text-white focus:rounded-lg focus:ring-2 focus:ring-sky-500 focus:ring-offset-2"
@@ -178,20 +162,16 @@ export default function RootLayout({
           Skip to main content
         </a>
 
-        {/* ── Ambient Background Blobs ──
-         * Animated blurred circles that provide subtle depth behind content. */}
-        <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 -left-4 w-72 h-72 bg-sky-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
-          <div className="absolute top-0 -right-4 w-72 h-72 bg-cyan-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
-          <div className="absolute -bottom-8 left-20 w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
-        </div>
+        <Cursor />
+
+        <Navbar />
 
         <div id="main-content" className="relative z-0">
           {children}
         </div>
 
-        {/* ── Vercel Analytics ──
-         * Only initialized in production to avoid local noise. */}
+        <Footer />
+
         {process.env.NODE_ENV === "production" && <Analytics />}
       </body>
     </html>
