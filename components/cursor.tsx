@@ -25,9 +25,7 @@ export default function Cursor() {
       <div
         className="w-10 h-10 rounded-full border-2"
         style={{
-          borderColor: cursorHover
-            ? "hsl(198 96% 30%)"
-            : "hsl(198 96% 53%)",
+          borderColor: cursorHover ? "hsl(198 96% 30%)" : "hsl(198 96% 53%)",
           boxShadow: cursorHover
             ? "0 0 25px hsla(var(--neon-green), 0.7)"
             : "0 0 20px hsla(var(--neon-green), 0.5)",

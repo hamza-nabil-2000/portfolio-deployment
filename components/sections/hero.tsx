@@ -47,13 +47,12 @@ export default function Hero() {
             </p>
             <div className="space-y-3">
               <p className="text-base sm:text-lg text-foreground/80 leading-relaxed animate-slide-in animation-delay-200 text-justify">
-                Quality Assurance Engineer with {calcYearsOfExperience()}{" "}
-                years of experience in manual and automation testing.
-                Proficient in Playwright (TypeScript), functional and
-                regression testing, test case design, and defect reporting.
-                Possess strong analytical and problem-solving skills,
-                complemented by a BS in Information Technology and hands-on
-                experience in healthcare applications.
+                Quality Assurance Engineer with {calcYearsOfExperience()} years
+                of experience in manual and automation testing. Proficient in
+                Playwright (TypeScript), functional and regression testing, test
+                case design, and defect reporting. Possess strong analytical and
+                problem-solving skills, complemented by a BS in Information
+                Technology and hands-on experience in healthcare applications.
               </p>
             </div>
             <div className="flex flex-wrap gap-3 sm:gap-4 pt-4 animate-slide-in animation-delay-400">

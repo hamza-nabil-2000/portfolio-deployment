@@ -49,16 +49,21 @@ export default function Navbar() {
           <div className="flex-shrink-0">
             <Link
               href="/"
-              className="w-10 h-10 rounded-full overflow-hidden border-2 border-primary shadow-neon-sm hover:shadow-neon-lg transition-all duration-300 block"
+              className="flex items-center gap-2.5 group"
               aria-label="Home"
             >
-              <Image
-                src="/pfp.jpeg"
-                alt="Hamza Nabil"
-                width={40}
-                height={40}
-                className="object-cover w-full h-full"
-              />
+              {/* <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-primary shadow-neon-sm group-hover:shadow-neon-lg transition-all duration-300 flex-shrink-0">
+                <Image
+                  src="/pfp.jpeg"
+                  alt="Hamza Nabil"
+                  width={40}
+                  height={40}
+                  className="object-cover w-full h-full"
+                />
+              </div> */}
+              <span className="font-bold text-2xl tracking-wider text-primary group-hover:text-accent transition-colors duration-300">
+                HN
+              </span>
             </Link>
           </div>
 
