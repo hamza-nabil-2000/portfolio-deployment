@@ -109,7 +109,7 @@ export const metadata: Metadata = {
         type: "image/png",
       },
     ],
-    shortcut: ["/favicon.ico"],
+    shortcut: ["/icon-light-32x32.png"],
   },
   manifest: "/site.webmanifest",
   verification: {

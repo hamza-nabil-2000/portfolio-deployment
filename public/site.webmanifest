@@ -1,0 +1,19 @@
+{
+  "name": "Hamza Nabil - QA Engineer Portfolio",
+  "short_name": "Hamza Nabil",
+  "icons": [
+    {
+      "src": "/icon-light-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#0a0d14",
+  "background_color": "#0a0d14",
+  "display": "standalone"
+}
