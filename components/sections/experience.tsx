@@ -45,7 +45,7 @@ export default function Experience() {
                       size={20}
                       className="text-primary mt-1 flex-shrink-0 group-hover/item:translate-x-1 transition-transform"
                     />
-                    <span className="text-foreground/80 text-justify">
+                    <span className="text-foreground/80 text-left sm:text-justify">
                       {item}
                     </span>
                   </li>

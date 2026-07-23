@@ -33,7 +33,7 @@ export default function Education() {
             <p className="font-semibold text-primary mb-2">
               Final Year Project:
             </p>
-            <p className="text-foreground/80 text-justify">
+            <p className="text-foreground/80 text-left sm:text-justify">
               DICOM Viewer &amp; Annotator - Built a medical imaging tool for
               viewing and annotating DICOM files using ReactJS and SQL Server.
             </p>

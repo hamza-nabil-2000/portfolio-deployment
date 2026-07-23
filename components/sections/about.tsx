@@ -14,7 +14,7 @@ export default function About() {
         </div>
         <div className="grid md:grid-cols-2 gap-8 md:gap-12">
           <div className="space-y-4">
-            <p className="text-base sm:text-lg text-foreground/80 leading-relaxed text-justify">
+            <p className="text-base sm:text-lg text-foreground/80 leading-relaxed text-left sm:text-justify">
               I am a Quality Assurance Engineer focused on improving software
               quality through structured Manual Testing and Practical
               Automation. I possess strong analytical and problem-solving
@@ -25,7 +25,7 @@ export default function About() {
             </p>
           </div>
           <div className="space-y-4">
-            <p className="text-base sm:text-lg text-foreground/80 leading-relaxed text-justify">
+            <p className="text-base sm:text-lg text-foreground/80 leading-relaxed text-left sm:text-justify">
               I hold a BS in Information Technology with a 3.51 GPA from PMAS
               Arid Agriculture University and currently work at CHI
               Technologies in Islamabad. Alongside QA work, I also have

@@ -19,7 +19,7 @@ export default function Contact() {
           <h2 className="text-3xl md:text-4xl font-bold mb-4 md:mb-6 neon-text-gradient">
             Get In Touch
           </h2>
-          <p className="text-base sm:text-lg text-foreground/80 mb-6 md:mb-8 max-w-2xl mx-auto text-justify">
+          <p className="text-base sm:text-lg text-foreground/80 mb-6 md:mb-8 max-w-2xl mx-auto text-left sm:text-justify">
             I am open to Quality Assurance Opportunities where I can
             contribute through Reliable Manual testing, Automation with
             Playwright or Selenium, and thoughtful collaboration with Product

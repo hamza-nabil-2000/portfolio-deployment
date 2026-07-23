@@ -59,12 +59,12 @@ export default function Hero() {
               <Sparkles size={16} />
               <span>QA Engineer (Manual & Automation)</span>
             </div>
-            <p className="text-lg sm:text-xl text-muted-foreground animate-slide-in text-justify">
+            <p className="text-lg sm:text-xl text-muted-foreground animate-slide-in text-left sm:text-justify">
               Delivering reliable software through thoughtful manual and
               automation testing
             </p>
             <div className="space-y-3">
-              <p className="text-base sm:text-lg text-foreground/80 leading-relaxed animate-slide-in animation-delay-200 text-justify">
+              <p className="text-base sm:text-lg text-foreground/80 leading-relaxed animate-slide-in animation-delay-200 text-left sm:text-justify">
                 Quality Assurance Engineer with {calcYearsOfExperience()} years
                 of experience in manual and automation testing. Proficient in
                 Playwright (TypeScript), functional and regression testing, test
