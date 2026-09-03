@@ -30,7 +30,7 @@ export default function Hero() {
                 src="/pfp.jpeg"
                 alt="Hamza Nabil"
                 fill
-                className="object-cover"
+                className="object-cover object-[center_25%]"
                 priority
               />
             </div>
@@ -44,9 +44,9 @@ export default function Hero() {
           <h1 className="text-3xl sm:text-4xl font-bold leading-tight whitespace-nowrap">
             Hamza <span className="neon-text">Nabil</span>
           </h1>
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm animate-glow-pulse">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm animate-glow-pulse select-none">
             <Sparkles size={16} />
-            <span>QA Engineer (Manual & Automation)</span>
+            <span>IT Support Enginer</span>
           </div>
         </div>
 
@@ -55,22 +55,26 @@ export default function Hero() {
             <h1 className="hidden md:block text-4xl md:text-5xl lg:text-7xl font-bold leading-tight whitespace-nowrap">
               Hamza <span className="neon-text">Nabil</span>
             </h1>
-            <div className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm animate-glow-pulse">
+            <div className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm animate-glow-pulse select-none">
               <Sparkles size={16} />
-              <span>QA Engineer (Manual & Automation)</span>
+              <span>Information Technology Support Specialist</span>
             </div>
             <p className="text-lg sm:text-xl text-muted-foreground animate-slide-in text-left sm:text-justify">
-              Delivering reliable software through thoughtful manual and
-              automation testing
+              Keeping people productive through reliable IT support and
+              practical problem-solving
             </p>
             <div className="space-y-3">
               <p className="text-base sm:text-lg text-foreground/80 leading-relaxed animate-slide-in animation-delay-200 text-left sm:text-justify">
-                Quality Assurance Engineer with {calcYearsOfExperience()} years
-                of experience in manual and automation testing. Proficient in
-                Playwright (TypeScript), functional and regression testing, test
-                case design, and defect reporting. Possess strong analytical and
-                problem-solving skills, complemented by a BS in Information
-                Technology and hands-on experience in healthcare applications.
+                IT Support Engineer focused on resolving hardware, software,
+                networking, and user access issues while delivering dependable
+                day-to-day technical support. Previously worked as a Quality
+                Assurance Engineer with {calcYearsOfExperience()} years of
+                experience in manual and automation testing. Proficient in
+                Playwright (TypeScript), functional and regression testing,
+                test case design, and defect reporting. Possess strong
+                analytical and problem-solving skills, complemented by a BS in
+                Information Technology and hands-on experience in healthcare
+                applications.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 pt-4 animate-slide-in animation-delay-400 w-full">
@@ -119,7 +123,7 @@ export default function Hero() {
                   src="/pfp.jpeg"
                   alt="Hamza Nabil"
                   fill
-                  className="object-cover"
+                  className="object-cover object-[center_25%]"
                   priority
                 />
               </div>
