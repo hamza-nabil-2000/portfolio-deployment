@@ -1,14 +1,14 @@
 {
-  "name": "Hamza Nabil - QA Engineer Portfolio",
+  "name": "Hamza Nabil - IT Support Engineer",
   "short_name": "Hamza Nabil",
   "icons": [
     {
-      "src": "/icon-light-32x32.png",
+      "src": "/portfolio-icon-32.png",
       "sizes": "32x32",
       "type": "image/png"
     },
     {
-      "src": "/apple-icon.png",
+      "src": "/portfolio-apple-icon.png",
       "sizes": "180x180",
       "type": "image/png"
     }
