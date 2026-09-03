@@ -1,10 +1,22 @@
 const EXPERIENCE_START = new Date(2024, 9, 22);
 
-export function calcYearsOfExperience(): number {
-  const now = new Date();
-  const diffMs = now.getTime() - EXPERIENCE_START.getTime();
-  const years = diffMs / (1000 * 60 * 60 * 24 * 365.25);
-  return Math.round(years * 10) / 10;
+export function calcYearsOfExperience(now = new Date()): number {
+  let completedMonths =
+    (now.getFullYear() - EXPERIENCE_START.getFullYear()) * 12 +
+    now.getMonth() -
+    EXPERIENCE_START.getMonth();
+
+  if (now.getDate() < EXPERIENCE_START.getDate()) {
+    completedMonths -= 1;
+  }
+
+  const completedHalfYears = Math.floor(Math.max(0, completedMonths) / 6);
+  return completedHalfYears / 2;
+}
+
+export function formatYearsOfExperience(): string {
+  const years = calcYearsOfExperience();
+  return Number.isInteger(years) ? String(years) : `${years}+`;
 }
 
 export const experienceHighlights = [

@@ -91,6 +91,10 @@ export default function Stats() {
           <div className="text-center space-y-2">
             <div className="text-3xl sm:text-4xl md:text-5xl font-bold neon-text">
               {stats.experience}
+              {stats.experience === targetStats.experience &&
+              !Number.isInteger(targetStats.experience)
+                ? "+"
+                : ""}
             </div>
             <div className="text-sm sm:text-base text-muted-foreground">
               Years Experience

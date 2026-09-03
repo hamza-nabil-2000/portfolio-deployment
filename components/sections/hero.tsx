@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Sparkles, Linkedin, Mail, Phone, MapPin } from "lucide-react";
-import { calcYearsOfExperience } from "@/lib/portfolio-data";
+import { formatYearsOfExperience } from "@/lib/portfolio-data";
 
 const emailDraftUrl =
   "https://mail.google.com/mail/?view=cm&fs=1&to=hamzapk@gmail.com";
@@ -68,7 +68,7 @@ export default function Hero() {
                 IT Support Engineer focused on resolving hardware, software,
                 networking, and user access issues while delivering dependable
                 day-to-day technical support. Previously worked as a Quality
-                Assurance Engineer with {calcYearsOfExperience()} years of
+                Assurance Engineer with {formatYearsOfExperience()} years of
                 experience in manual and automation testing. Proficient in
                 Playwright (TypeScript), functional and regression testing,
                 test case design, and defect reporting. Possess strong

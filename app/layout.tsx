@@ -29,7 +29,7 @@ const firaCode = Fira_Code({
 
 export const metadata: Metadata = {
   title: {
-    default: "Hamza Nabil - QA Engineer Portfolio",
+    default: "Hamza Nabil - IT Support Engineer",
     template: "%s | Hamza Nabil",
   },
   description:
