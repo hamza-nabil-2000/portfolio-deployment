@@ -20,7 +20,7 @@ export default function Footer() {
             <Linkedin size={20} />
           </a>
           <a
-            href="https://wa.me/03318213810"
+            href="https://wa.me/923318213810"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-primary transition-all duration-300 hover:scale-110 hover:shadow-neon-sm cursor-pointer"

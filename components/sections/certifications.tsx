@@ -3,7 +3,7 @@ import { certifications } from "@/lib/portfolio-data";
 
 export default function Certifications() {
   return (
-    <section className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 border-t border-border/50">
+    <section id="certifications" className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 border-t border-border/50">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center gap-3 mt-8 md:mt-12 mb-8 md:mb-12">
           <div className="p-2 md:p-3 rounded-lg bg-primary/10">

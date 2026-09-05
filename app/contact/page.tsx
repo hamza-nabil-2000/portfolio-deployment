@@ -1,13 +1,5 @@
-import Contact from "@/components/sections/contact";
+import { redirect } from "next/navigation";
 
-export const metadata = {
-  title: "Contact",
-};
-
-export default function ContactPage() {
-  return (
-    <div className="bg-background text-foreground overflow-x-hidden">
-      <Contact />
-    </div>
-  );
+export default function LegacyPage() {
+  redirect("/#contact");
 }

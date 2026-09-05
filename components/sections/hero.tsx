@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { Sparkles, Linkedin, Mail, Phone, MapPin } from "lucide-react";
-import { formatYearsOfExperience } from "@/lib/portfolio-data";
 
 const emailDraftUrl =
   "https://mail.google.com/mail/?view=cm&fs=1&to=hamzapk@gmail.com";
@@ -10,11 +9,11 @@ const address = "CB-1023 Hamza Street, Afshan Colony, Rawalpindi";
 const mapsUrl = "https://maps.app.goo.gl/bTykdoirGvFGB9Pr9";
 const rawPhoneNumber = "+92 331 8213810";
 const phoneNumber = rawPhoneNumber.replace(/[a-zA-Z]/g, "");
-const phoneTelUrl = `tel:${phoneNumber.replace(/\D/g, "")}`;
+const phoneTelUrl = `tel:+${phoneNumber.replace(/\D/g, "")}`;
 
 export default function Hero() {
   return (
-    <section className="pt-24 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden min-h-[85vh] sm:min-h-[90vh] flex items-center">
+    <section id="home" className="pt-24 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden min-h-[85vh] sm:min-h-[90vh] flex items-center">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/5 rounded-full blur-3xl animate-pulse animation-delay-2000"></div>
@@ -46,7 +45,7 @@ export default function Hero() {
           </h1>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm animate-glow-pulse select-none">
             <Sparkles size={16} />
-            <span>IT Support Enginer</span>
+            <span>IT Support Engineer</span>
           </div>
         </div>
 
@@ -57,7 +56,7 @@ export default function Hero() {
             </h1>
             <div className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm animate-glow-pulse select-none">
               <Sparkles size={16} />
-              <span>Information Technology Support Specialist</span>
+              <span>IT Support Engineer</span>
             </div>
             <p className="text-lg sm:text-xl text-muted-foreground animate-slide-in text-left sm:text-justify">
               Keeping people productive through reliable IT support and
@@ -65,16 +64,11 @@ export default function Hero() {
             </p>
             <div className="space-y-3">
               <p className="text-base sm:text-lg text-foreground/80 leading-relaxed animate-slide-in animation-delay-200 text-left sm:text-justify">
-                IT Support Engineer focused on resolving hardware, software,
-                networking, and user access issues while delivering dependable
-                day-to-day technical support. Previously worked as a Quality
-                Assurance Engineer with {formatYearsOfExperience()} years of
-                experience in manual and automation testing. Proficient in
-                Playwright (TypeScript), functional and regression testing,
-                test case design, and defect reporting. Possess strong
-                analytical and problem-solving skills, complemented by a BS in
-                Information Technology and hands-on experience in healthcare
-                applications.
+                IT Support Engineer with hands-on experience troubleshooting hardware,
+                software, networking, system configuration, and user access issues.
+                I provide reliable technical support and keep day-to-day system
+                operations running smoothly. My background spans software development
+                and QA, backed by a BS in Information Technology.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 pt-4 animate-slide-in animation-delay-400 w-full">
@@ -97,7 +91,7 @@ export default function Hero() {
                 <span>EMAIL ME</span>
               </a>
               <a
-                href="https://wa.me/03318213810"
+                href="https://wa.me/923318213810"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="neon-button inline-flex items-center justify-center gap-1.5 sm:gap-2 w-full sm:w-0 sm:flex-1 text-center whitespace-nowrap text-xs sm:text-xs md:text-xs lg:text-sm px-2 sm:px-3 py-3"

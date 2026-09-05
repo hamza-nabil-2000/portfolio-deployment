@@ -1,13 +1,5 @@
-import Education from "@/components/sections/education";
+import { redirect } from "next/navigation";
 
-export const metadata = {
-  title: "Education",
-};
-
-export default function EducationPage() {
-  return (
-    <div className="bg-background text-foreground overflow-x-hidden">
-      <Education />
-    </div>
-  );
+export default function LegacyPage() {
+  redirect("/#education");
 }

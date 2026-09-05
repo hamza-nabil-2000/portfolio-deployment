@@ -1,13 +1,5 @@
-import Certifications from "@/components/sections/certifications";
+import { redirect } from "next/navigation";
 
-export const metadata = {
-  title: "Certifications",
-};
-
-export default function CertificationsPage() {
-  return (
-    <div className="bg-background text-foreground overflow-x-hidden">
-      <Certifications />
-    </div>
-  );
+export default function LegacyPage() {
+  redirect("/#certifications");
 }

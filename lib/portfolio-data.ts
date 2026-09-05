@@ -63,122 +63,46 @@ export const certifications = [
   },
 ];
 
-const heroText =
-  "Quality Assurance Engineer manual automation testing Playwright TypeScript test case design defect reporting healthcare application testing analytical problem-solving skills";
-
-const badgeText = "QA Engineer Manual Automation";
-
-const aboutTexts = [
-  "Quality Assurance Engineer focused on improving software quality through structured Manual Testing and Practical Automation. Possess strong analytical and problem-solving skills, with hands-on experience in healthcare applications. Experience includes Playwright with TypeScript, Functional and Regression testing, Test Case Design, and Defect Reporting.",
-  "BS in Information Technology from PMAS Arid Agriculture University. Working knowledge of HTML5, CSS3, PHP, Angular, ReactJS/NextJS, and SQL Server.",
+export const roles = [
+  {
+    title: "IT Support Engineer",
+    period: "July 2026 - Present",
+    highlights: [
+      "Provide day-to-day technical support for hardware, software, networking, and user access issues.",
+      "Install, configure, troubleshoot, and maintain Windows and Ubuntu/Linux systems.",
+      "Manage user accounts, permissions, system configurations, software updates, and basic system administration tasks.",
+      "Use PowerShell, Command Prompt, Linux Terminal, SSH, Git, Azure DevOps, and Docker for technical support and system-related activities.",
+      "Identify root causes of technical issues and provide timely resolutions to minimize operational disruption.",
+    ],
+  },
+  { title: "Software Quality Assurance Engineer", period: "April 2025 - July 2026", highlights: experienceHighlights },
+  {
+    title: "Software Development",
+    period: "October 2024 - April 2025",
+    highlights: [
+      "Contributed to web application development using Angular, ReactJS, and NextJS.",
+      "Assisted in developing, modifying, and troubleshooting frontend features.",
+      "Worked with Visual Studio Code and MySQL during development activities.",
+      "Used Azure DevOps for source code management and team collaboration.",
+      "Collaborated with team members to understand requirements, resolve development issues, and support application improvements.",
+    ],
+  },
 ];
 
-interface SkillDef {
-  name: string;
-  keywords: string[];
-  certKeywords: string[];
-}
-
-function computeSkillLevel(def: SkillDef): number {
-  const hasMatch = (text: string) =>
-    def.keywords.some((kw) => new RegExp(kw, "i").test(text));
-
-  const hasCertMatch = (text: string) =>
-    def.certKeywords.some((kw) => new RegExp(kw, "i").test(text));
-
-  const expMatches = experienceHighlights.filter(hasMatch).length;
-  const projMatches = projectCards.filter((p) => p.items.some(hasMatch)).length;
-  const certMatch = certifications.some((c) => hasCertMatch(c.title));
-  const inAbout = aboutTexts.some(hasMatch);
-  const inHero = hasMatch(heroText);
-  const inBadge = hasMatch(badgeText);
-
-  let score = 0;
-  if (expMatches >= 1) score += 70;
-  if (expMatches >= 2) score += 10;
-  if (inBadge) score += 5;
-  if (inHero) score += 8;
-  if (projMatches >= 1) score += 7;
-  if (certMatch) score += 8;
-  if (inAbout && expMatches === 0) score += 20;
-  if (inAbout && expMatches >= 1) score += 5;
-
-  return Math.min(95, score);
-}
-
-const qaSkillDefs: SkillDef[] = [
-  {
-    name: "Playwright (TypeScript)",
-    keywords: ["playwright", "typescript", "automation"],
-    certKeywords: [],
-  },
-  {
-    name: "Selenium (Introductory)",
-    keywords: ["selenium"],
-    certKeywords: ["selenium"],
-  },
-  {
-    name: "Manual Testing",
-    keywords: ["manual", "test case"],
-    certKeywords: ["testing", "qa"],
-  },
-  {
-    name: "Functional Testing",
-    keywords: ["functional"],
-    certKeywords: ["testing", "qa"],
-  },
-  {
-    name: "Regression Testing",
-    keywords: ["regression"],
-    certKeywords: ["testing", "qa"],
-  },
-  { name: "API Testing", keywords: ["api"], certKeywords: [] },
-  {
-    name: "UI/UX Testing",
-    keywords: ["ui", "ux", "workflow", "interface"],
-    certKeywords: [],
-  },
-  {
-    name: "Non-functional Testing",
-    keywords: ["non-functional", "performance"],
-    certKeywords: [],
-  },
-  {
-    name: "Test Case Design",
-    keywords: ["test case", "design"],
-    certKeywords: ["testing", "qa"],
-  },
-  {
-    name: "Defect Reporting & Bug Tracking",
-    keywords: ["defect", "bug"],
-    certKeywords: [],
-  },
-  {
-    name: "SDLC & STLC",
-    keywords: ["sdlc", "stlc", "lifecycle"],
-    certKeywords: [],
-  },
-  { name: "Agile / Scrum", keywords: ["agile", "scrum"], certKeywords: [] },
+export const skillGroups = [
+  { title: "IT Support & Troubleshooting", items: [
+    "Hardware troubleshooting", "Software installation & configuration", "Incident troubleshooting & root cause identification", "System configuration, updates & maintenance", "User accounts, access & permissions",
+  ] },
+  { title: "Systems & Networking", items: [
+    "Windows 10/11, Ubuntu/Linux & macOS", "Windows & Linux administration", "User & group management, file permissions & services", "TCP/IP, DNS, DHCP & IP addressing", "Wi-Fi & LAN troubleshooting, Ping & SSH",
+  ] },
+  { title: "Tools & Platforms", items: [
+    "PowerShell, Command Prompt & Linux Terminal", "Docker", "Git, GitHub & Azure DevOps", "Visual Studio Code & Microsoft Visual Studio", "SQL Server Management Studio",
+  ] },
+  { title: "Testing & QA", items: [
+    "Playwright (TypeScript)", "Selenium (Introductory)", "Manual & automated testing", "Functional, regression, API, UI/UX & non-functional testing", "Test case design, defect reporting & bug tracking", "SDLC, STLC & Agile/Scrum",
+  ] },
+  { title: "Web Technologies", note: "Working knowledge", items: [
+    "HTML5 & CSS3", "PHP", "Angular", "ReactJS & NextJS",
+  ] },
 ];
-
-const devSkillDefs: SkillDef[] = [
-  {
-    name: "ReactJS / NextJS",
-    keywords: ["react", "nextjs", "dicom"],
-    certKeywords: ["react"],
-  },
-  { name: "Angular", keywords: ["angular"], certKeywords: ["angular"] },
-  { name: "HTML5 / CSS3", keywords: ["html", "css"], certKeywords: [] },
-  { name: "PHP", keywords: ["php"], certKeywords: [] },
-  { name: "SQL Queries", keywords: ["sql"], certKeywords: [] },
-];
-
-export const qaSkills = qaSkillDefs.map((def) => ({
-  name: def.name,
-  level: computeSkillLevel(def),
-}));
-
-export const devSkills = devSkillDefs.map((def) => ({
-  name: def.name,
-  level: computeSkillLevel(def),
-}));

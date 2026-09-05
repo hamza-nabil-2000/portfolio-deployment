@@ -1,13 +1,5 @@
-import Experience from "@/components/sections/experience";
+import { redirect } from "next/navigation";
 
-export const metadata = {
-  title: "Experience",
-};
-
-export default function ExperiencePage() {
-  return (
-    <div className="bg-background text-foreground overflow-x-hidden">
-      <Experience />
-    </div>
-  );
+export default function LegacyPage() {
+  redirect("/#experience");
 }

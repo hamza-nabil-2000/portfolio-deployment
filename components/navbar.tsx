@@ -1,19 +1,17 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Image from "next/image";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/experience", label: "Experience" },
-  { href: "/education", label: "Education" },
-  { href: "/skills", label: "Skills" },
-  { href: "/certifications", label: "Certifications" },
-  { href: "/contact", label: "Contact" },
+  { href: "/#home", label: "Home" },
+  { href: "/#about", label: "About" },
+  { href: "/#experience", label: "Experience" },
+  { href: "/#education", label: "Education" },
+  { href: "/#skills", label: "Skills" },
+  { href: "/#certifications", label: "Certifications" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export default function Navbar() {
@@ -21,23 +19,53 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
-    setIsMenuOpen(false);
+    let frame = 0;
+    const updateSection = () => {
+      frame = 0;
+      setScrolled(window.scrollY > 50);
+      const sections = navLinks
+        .map((link) => document.getElementById(link.href.split("#")[1]))
+        .filter((section): section is HTMLElement => section !== null);
+      if (!sections.length) return;
+
+      // Read the section crossing just below the fixed navbar. Gaps, including
+      // the About statistics, continue to belong to the preceding section.
+      let current = sections[0].id;
+      for (const section of sections) {
+        if (section.getBoundingClientRect().top <= 140) current = section.id;
+      }
+      // Short final sections may never reach the navbar before the page ends.
+      if (window.scrollY > 0 && window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) {
+        current = sections[sections.length - 1].id;
+      }
+      setActiveSection(current);
+    };
+    const scheduleUpdate = () => {
+      if (!frame) frame = window.requestAnimationFrame(updateSection);
+    };
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+    window.addEventListener("hashchange", scheduleUpdate);
+    const observer = new ResizeObserver(scheduleUpdate);
+    observer.observe(document.body);
+    updateSection();
+    return () => {
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+      window.removeEventListener("hashchange", scheduleUpdate);
+      observer.disconnect();
+      window.cancelAnimationFrame(frame);
+    };
   }, [pathname]);
 
-  const activeSection = pathname === "/" ? "home" : pathname.slice(1);
+  const closeMenu = () => setIsMenuOpen(false);
 
   return (
     <nav
+      aria-label="Main navigation"
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${
         scrolled
           ? "bg-background/95 backdrop-blur-md border-b border-primary/20 shadow-neon-sm"
@@ -47,36 +75,31 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
-            <Link
-              href="/"
+            <a
+              href="/#home"
+              onClick={closeMenu}
               className="flex items-center gap-2.5 group"
               aria-label="Home"
             >
-              {/* <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-primary shadow-neon-sm group-hover:shadow-neon-lg transition-all duration-300 flex-shrink-0">
-                <Image
-                  src="/pfp.jpeg"
-                  alt="Hamza Nabil"
-                  width={40}
-                  height={40}
-                  className="object-cover w-full h-full"
-                />
-              </div> */}
+
               <span className="font-bold text-2xl tracking-wider text-primary group-hover:text-accent transition-colors duration-300">
                 HN
               </span>
-            </Link>
+            </a>
           </div>
 
           <div className="hidden lg:flex items-center gap-6 xl:gap-8">
             {navLinks.map((link) => {
-              const section = link.href === "/" ? "home" : link.href.slice(1);
+              const section = link.href.split("#")[1];
               const isActive = activeSection === section;
               return (
-                <Link
+                <a
                   key={link.href}
                   href={link.href}
-                  className={`relative pb-1 text-foreground hover:text-primary transition-all duration-300 group ${
-                    isActive ? "text-primary" : ""
+                  onClick={closeMenu}
+                  aria-current={isActive ? "location" : undefined}
+                  className={`relative pb-1 hover:text-primary transition-all duration-300 group ${
+                    isActive ? "text-primary" : "text-foreground"
                   }`}
                 >
                   {link.label}
@@ -85,7 +108,7 @@ export default function Navbar() {
                       isActive ? "w-full" : "w-0 group-hover:w-full"
                     }`}
                   ></span>
-                </Link>
+                </a>
               );
             })}
           </div>
@@ -93,6 +116,9 @@ export default function Navbar() {
           <div className="lg:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={isMenuOpen ? "Close navigation" : "Open navigation"}
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-navigation"
               className="text-foreground hover:text-primary transition-colors cursor-pointer"
             >
               {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -101,14 +127,16 @@ export default function Navbar() {
         </div>
 
         {isMenuOpen && (
-          <div className="lg:hidden pb-4 space-y-2 animate-slide-down">
+          <div id="mobile-navigation" className="lg:hidden pb-4 space-y-2 animate-slide-down">
             {navLinks.map((link) => {
-              const section = link.href === "/" ? "home" : link.href.slice(1);
+              const section = link.href.split("#")[1];
               const isActive = activeSection === section;
               return (
-                <Link
+                <a
                   key={link.href}
                   href={link.href}
+                  onClick={closeMenu}
+                  aria-current={isActive ? "location" : undefined}
                   className={`block w-full text-left px-4 py-3 rounded-lg transition-all duration-200 border-l-2 ${
                     isActive
                       ? "text-primary bg-primary/10 border-primary font-semibold"
@@ -116,7 +144,7 @@ export default function Navbar() {
                   }`}
                 >
                   {link.label}
-                </Link>
+                </a>
               );
             })}
           </div>

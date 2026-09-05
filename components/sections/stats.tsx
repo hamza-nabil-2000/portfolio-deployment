@@ -97,7 +97,7 @@ export default function Stats() {
                 : ""}
             </div>
             <div className="text-sm sm:text-base text-muted-foreground">
-              Years Experience
+              Years Across IT Roles
             </div>
           </div>
           <div className="text-center space-y-2">

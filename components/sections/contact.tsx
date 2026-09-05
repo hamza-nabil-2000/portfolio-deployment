@@ -5,7 +5,7 @@ const emailDraftUrl =
 
 export default function Contact() {
   return (
-    <section className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 border-t border-border/50">
+    <section id="contact" className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 border-t border-border/50">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center gap-3 mt-8 md:mt-12 mb-8 md:mb-12">
           <div className="p-2 md:p-3 rounded-lg bg-primary/10">
@@ -20,10 +20,10 @@ export default function Contact() {
             Get In Touch
           </h2>
           <p className="text-base sm:text-lg text-foreground/80 mb-6 md:mb-8 max-w-2xl mx-auto text-left sm:text-justify">
-            I am open to Quality Assurance Opportunities where I can
-            contribute through Reliable Manual testing, Automation with
-            Playwright or Selenium, and thoughtful collaboration with Product
-            and Engineering teams.
+            Get in touch to discuss IT support opportunities, technical
+            troubleshooting, or collaboration. My experience covers hardware
+            and software support, Windows and Linux systems, networking, and
+            user access, supported by a background in QA and development.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 w-full">
             <a
@@ -36,7 +36,7 @@ export default function Contact() {
               EMAIL ME
             </a>
             <a
-              href="https://wa.me/03318213810"
+              href="https://wa.me/923318213810"
               target="_blank"
               rel="noopener noreferrer"
               className="neon-button inline-flex items-center justify-center gap-2 text-lg w-full sm:w-44 text-center"

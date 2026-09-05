@@ -2,7 +2,7 @@ import { GraduationCap } from "lucide-react";
 
 export default function Education() {
   return (
-    <section className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 border-t border-border/50">
+    <section id="education" className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 border-t border-border/50">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center gap-3 mt-8 md:mt-12 mb-8 md:mb-12">
           <div className="p-2 md:p-3 rounded-lg bg-primary/10">
@@ -23,7 +23,7 @@ export default function Education() {
               </p>
             </div>
             <span className="text-sm text-primary border border-primary/30 px-4 py-2 rounded-full bg-primary/5">
-              February 2020 – February 2024
+              2020 - 2024
             </span>
           </div>
           <p className="text-foreground/80 mb-4 text-lg">

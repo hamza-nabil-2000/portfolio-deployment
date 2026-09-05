@@ -1,13 +1,5 @@
-import Skills from "@/components/sections/skills";
+import { redirect } from "next/navigation";
 
-export const metadata = {
-  title: "Skills",
-};
-
-export default function SkillsPage() {
-  return (
-    <div className="bg-background text-foreground overflow-x-hidden">
-      <Skills />
-    </div>
-  );
+export default function LegacyPage() {
+  redirect("/#skills");
 }
