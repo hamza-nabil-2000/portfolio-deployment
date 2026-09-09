@@ -4,59 +4,92 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* ── Core Theme Colors ──
-   * Cyan/Blue theme derived from the profile picture background (#14b4fa).
-   * All colors are defined in HSL to allow easy programmatic adjustments. */
-  --background: 200 40% 6%;
-  /* Very dark blue-gray: #0a1219 */
-  --foreground: 195 50% 90%;
-  /* Soft cyan-white: #d9f0f7 */
-  --card: 200 35% 8%;
-  /* Slightly lighter dark: #0d161f */
-  --card-foreground: 195 50% 90%;
-  --popover: 200 35% 8%;
-  --popover-foreground: 195 50% 90%;
-  --primary: 198 96% 53%;
-  /* Profile-picture cyan: #14b4fa */
-  --primary-foreground: 200 40% 6%;
-  --secondary: 200 30% 12%;
-  --secondary-foreground: 195 50% 90%;
-  --muted: 200 25% 10%;
-  --muted-foreground: 195 30% 60%;
-  --accent: 190 90% 55%;
-  /* Brighter sky blue: #1ad6f5 */
-  --accent-foreground: 200 40% 6%;
-  --destructive: 0 85% 55%;
-  --destructive-foreground: 195 50% 90%;
-  --border: 200 30% 15%;
-  --input: 200 30% 10%;
-  --ring: 198 96% 53%;
+  color-scheme: light;
+  /* Royal blue brand on a light surface. */
+  --background: 216 45% 98%;
+  --foreground: 222 42% 13%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 42% 13%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 42% 13%;
+  --primary: 220 82% 54%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 216 35% 94%;
+  --secondary-foreground: 222 38% 18%;
+  --muted: 216 30% 95%;
+  --muted-foreground: 218 14% 40%;
+  --accent: 229 72% 55%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 85% 45%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 216 24% 85%;
+  --input: 216 26% 91%;
+  --ring: 220 82% 54%;
   --radius: 0.75rem;
 
-  /* ── Neon Glow Color Palette ──
-   * Aliases for the primary/accent hues used in glow effects and animations.
-   * Kept as separate tokens so animations can reference them by name. */
-  --neon-green: 198 96% 53%;
-  /* Maps to --primary (cyan) */
-  --neon-mint: 190 90% 55%;
-  /* Maps to --accent (sky) */
-  --neon-lime: 210 85% 55%;
-  /* Deeper blue for variety */
-  --neon-emerald: 185 85% 55%;
-  /* Teal-ish complement */
+  --neon-green: 220 82% 54%;
+  --neon-mint: 229 72% 55%;
+  --neon-lime: 211 86% 52%;
+  --neon-emerald: 235 72% 60%;
 
-  /* Glow opacity variants */
-  --glow-neon-green: 198 96% 53% / 0.8;
-  --glow-neon-mint: 190 90% 55% / 0.7;
-  --glow-neon-lime: 210 85% 55% / 0.6;
-  --glow-neon-emerald: 185 85% 55% / 0.75;
-  --glow-intense: 198 96% 53% / 0.9;
-  --glow-soft: 200 50% 40% / 0.3;
-  --glow-electric: 198 96% 60% / 0.85;
+  --glow-neon-green: 220 82% 54% / 0.38;
+  --glow-neon-mint: 229 72% 55% / 0.34;
+  --glow-neon-lime: 211 86% 52% / 0.32;
+  --glow-neon-emerald: 235 72% 60% / 0.34;
+  --glow-intense: 220 82% 54% / 0.45;
+  --glow-soft: 216 50% 72% / 0.3;
+  --glow-electric: 220 90% 60% / 0.4;
 
-  /* ── Shadow Definitions ──
-   * Neon shadows use the glow tokens above.
-   * Regular shadows are dark overlays for depth on the dark background. */
+  --shadow-neon-sm: 0 0 10px hsla(var(--neon-green), 0.22);
+  --shadow-neon-md: 0 0 18px hsla(var(--neon-green), 0.24);
+  --shadow-neon-lg: 0 0 26px hsla(var(--neon-green), 0.28);
+  --shadow-neon-xl: 0 0 40px hsla(var(--neon-green), 0.32);
+  --shadow-neon-mint: 0 0 20px hsla(var(--neon-mint), 0.24);
+  --shadow-neon-lime: 0 0 20px hsla(var(--neon-lime), 0.2);
+  --shadow-neon-electric: 0 0 28px hsla(var(--neon-green), 0.3);
+  --shadow-inner-neon: inset 0 0 24px hsla(var(--neon-green), 0.06);
+
+  --shadow-sm: 0 1px 2px 0 rgba(15, 40, 60, 0.08);
+  --shadow-md: 0 4px 8px -2px rgba(15, 40, 60, 0.1);
+  --shadow-lg: 0 10px 18px -4px rgba(15, 40, 60, 0.12);
+  --shadow-xl: 0 18px 28px -8px rgba(15, 40, 60, 0.14);
+}
+
+.dark {
+  color-scheme: dark;
+  --background: 222 45% 7%;
+  --foreground: 216 42% 92%;
+  --card: 222 39% 10%;
+  --card-foreground: 216 42% 92%;
+  --popover: 222 39% 10%;
+  --popover-foreground: 216 42% 92%;
+  --primary: 215 92% 66%;
+  --primary-foreground: 222 45% 8%;
+  --secondary: 220 32% 14%;
+  --secondary-foreground: 216 42% 92%;
+  --muted: 220 28% 12%;
+  --muted-foreground: 216 25% 65%;
+  --accent: 228 90% 72%;
+  --accent-foreground: 222 45% 8%;
+  --destructive: 0 85% 55%;
+  --destructive-foreground: 195 50% 90%;
+  --border: 218 31% 20%;
+  --input: 220 30% 13%;
+  --ring: 215 92% 66%;
+
+  --neon-green: 215 92% 66%;
+  --neon-mint: 228 90% 72%;
+  --neon-lime: 207 92% 65%;
+  --neon-emerald: 238 86% 73%;
+
+  --glow-neon-green: 215 92% 66% / 0.72;
+  --glow-neon-mint: 228 90% 72% / 0.62;
+  --glow-neon-lime: 207 92% 65% / 0.55;
+  --glow-neon-emerald: 238 86% 73% / 0.64;
+  --glow-intense: 215 92% 66% / 0.82;
+  --glow-soft: 218 48% 42% / 0.3;
+  --glow-electric: 215 96% 72% / 0.78;
+
   --shadow-neon-sm: 0 0 10px hsla(var(--neon-green), 0.5);
   --shadow-neon-md: 0 0 20px hsla(var(--neon-green), 0.6);
   --shadow-neon-lg: 0 0 30px hsla(var(--neon-green), 0.7);
@@ -432,6 +465,59 @@
 }
 
 @layer utilities {
+  .classic-portrait-frame {
+    position: relative;
+    margin-inline: auto;
+
+    padding: 0.7rem;
+
+    /* Outer border */
+    border: 4px solid hsl(var(--primary));
+
+    border-radius: 3rem;
+
+    background: linear-gradient(135deg,
+        hsla(var(--primary), 0.9),
+        hsla(var(--accent), 0.92),
+        hsla(var(--primary), 0.8));
+
+    box-shadow:
+      0 0 0 1px hsla(var(--primary), 0.18),
+      0 18px 40px -22px hsla(var(--primary), 0.7),
+      0 12px 30px -18px hsla(var(--accent), 0.5),
+      var(--shadow-xl);
+
+    overflow: hidden;
+  }
+
+  .classic-portrait-frame::before {
+    content: "";
+    position: absolute;
+    inset: 0.5rem;
+    border: 1px solid hsla(var(--background), 0.9);
+    border-radius: 1rem;
+    pointer-events: none;
+  }
+
+  .classic-portrait-image {
+    position: relative;
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    border-radius: 2.2rem;
+
+    /* Inner image border */
+    border: 3px solid rgba(255, 255, 255, 0.85);
+
+    object-fit: cover;
+
+    box-shadow:
+      inset 0 0 24px rgba(255, 255, 255, 0.18);
+
+    background: hsl(var(--muted));
+  }
 
   /* ── Neon Card Component ──
    * Cards with a subtle border that reveals a gradient border on hover.
@@ -897,6 +983,7 @@
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -908,6 +995,7 @@
     opacity: 0;
     transform: translateX(-30px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -919,6 +1007,7 @@
     opacity: 0;
     transform: scale(0.9);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -930,6 +1019,7 @@
     transform: translateY(0);
     opacity: 1;
   }
+
   100% {
     transform: translateY(10px);
     opacity: 0;
@@ -937,9 +1027,12 @@
 }
 
 @keyframes glowPulse {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 0 5px hsla(var(--neon-green), 0.5);
   }
+
   50% {
     box-shadow: 0 0 20px hsla(var(--neon-green), 0.8), 0 0 30px hsla(var(--neon-mint), 0.5);
   }

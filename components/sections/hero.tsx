@@ -13,7 +13,10 @@ const phoneTelUrl = `tel:+${phoneNumber.replace(/\D/g, "")}`;
 
 export default function Hero() {
   return (
-    <section id="home" className="pt-24 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden min-h-[85vh] sm:min-h-[90vh] flex items-center">
+    <section
+      id="home"
+      className="pt-24 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden min-h-[85vh] sm:min-h-[90vh] flex items-center"
+    >
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/5 rounded-full blur-3xl animate-pulse animation-delay-2000"></div>
@@ -22,22 +25,17 @@ export default function Hero() {
 
       <div className="max-w-6xl mx-auto relative animate-fade-in-up">
         <div className="md:hidden flex flex-col items-center text-center mb-6 space-y-4">
-          <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-accent/30 rounded-full blur-2xl animate-pulse"></div>
-            <div className="relative w-36 h-36 sm:w-44 sm:h-44 mx-auto rounded-full overflow-hidden border-4 border-primary shadow-neon-lg">
+          <div className="relative w-40 sm:w-48">
+            <div className="classic-portrait-frame">
               <Image
                 src="/pfp.jpeg"
                 alt="Hamza Nabil"
-                fill
-                className="object-cover object-[center_25%]"
+                width={881}
+                height={881}
+                sizes="(max-width: 1000px) 20rem, 20rem"
+                className="classic-portrait-image"
                 priority
               />
-            </div>
-            <div className="absolute bottom-1.5 right-1/2 translate-x-[4rem] sm:translate-x-[5rem]">
-              <div className="relative">
-                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                <div className="absolute inset-0 w-3 h-3 bg-green-500 rounded-full animate-ping"></div>
-              </div>
             </div>
           </div>
           <h1 className="text-3xl sm:text-4xl font-bold leading-tight whitespace-nowrap">
@@ -64,11 +62,12 @@ export default function Hero() {
             </p>
             <div className="space-y-3">
               <p className="text-base sm:text-lg text-foreground/80 leading-relaxed animate-slide-in animation-delay-200 text-left sm:text-justify">
-                IT Support Engineer with hands-on experience troubleshooting hardware,
-                software, networking, system configuration, and user access issues.
-                I provide reliable technical support and keep day-to-day system
-                operations running smoothly. My background spans software development
-                and QA, backed by a BS in Information Technology.
+                IT Support Engineer with hands-on experience troubleshooting
+                hardware, software, networking, system configuration, and user
+                access issues. I provide reliable technical support and keep
+                day-to-day system operations running smoothly. My background
+                spans software development and QA, backed by a BS in Information
+                Technology.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 pt-4 animate-slide-in animation-delay-400 w-full">
@@ -111,21 +110,16 @@ export default function Hero() {
 
           <div className="order-1 md:order-2 flex flex-col justify-center h-full">
             <div className="hidden md:block relative mb-8">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-accent/30 rounded-full blur-2xl animate-pulse"></div>
-              <div className="relative w-40 h-40 sm:w-56 sm:h-56 md:w-64 md:h-64 mx-auto rounded-full overflow-hidden border-4 border-primary shadow-neon-lg">
+              <div className="classic-portrait-frame w-64 lg:w-72">
                 <Image
                   src="/pfp.jpeg"
                   alt="Hamza Nabil"
-                  fill
-                  className="object-cover object-[center_25%]"
+                  width={590}
+                  height={881}
+                  sizes="(max-width: 1024px) 16rem, 18rem"
+                  className="classic-portrait-image"
                   priority
                 />
-              </div>
-              <div className="absolute bottom-2 right-1/2 translate-x-[4.5rem] sm:translate-x-[6.5rem] md:translate-x-[7.5rem]">
-                <div className="relative">
-                  <div className="w-3 h-3 sm:w-4 sm:h-4 bg-green-500 rounded-full animate-pulse"></div>
-                  <div className="absolute inset-0 w-3 h-3 sm:w-4 sm:h-4 bg-green-500 rounded-full animate-ping"></div>
-                </div>
               </div>
             </div>
 

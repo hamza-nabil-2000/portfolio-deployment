@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
+import ThemeToggle from "@/components/theme-toggle";
 
 const navLinks = [
   { href: "/#home", label: "Home" },
@@ -113,16 +114,19 @@ export default function Navbar() {
             })}
           </div>
 
-          <div className="lg:hidden">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label={isMenuOpen ? "Close navigation" : "Open navigation"}
-              aria-expanded={isMenuOpen}
-              aria-controls="mobile-navigation"
-              className="text-foreground hover:text-primary transition-colors cursor-pointer"
-            >
-              {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-            </button>
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <div className="lg:hidden">
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label={isMenuOpen ? "Close navigation" : "Open navigation"}
+                aria-expanded={isMenuOpen}
+                aria-controls="mobile-navigation"
+                className="text-foreground hover:text-primary transition-colors cursor-pointer"
+              >
+                {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+              </button>
+            </div>
           </div>
         </div>
 

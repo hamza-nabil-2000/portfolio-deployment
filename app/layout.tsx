@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import Cursor from "@/components/cursor";
+import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
 const inter = Inter({
@@ -106,8 +107,8 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f0f9ff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0c4a6e" },
+    { media: "(prefers-color-scheme: light)", color: "#f8faff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a1020" },
   ],
 };
 
@@ -119,7 +120,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${plusJakarta.variable} ${firaCode.variable}`}
+      className={`${inter.variable} ${plusJakarta.variable} ${firaCode.variable} dark`}
       suppressHydrationWarning
     >
       <head>
@@ -131,24 +132,31 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans antialiased min-h-screen">
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-sky-600 focus:text-white focus:rounded-lg focus:ring-2 focus:ring-sky-500 focus:ring-offset-2"
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem={false}
+          disableTransitionOnChange
         >
-          Skip to main content
-        </a>
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-sky-600 focus:text-white focus:rounded-lg focus:ring-2 focus:ring-sky-500 focus:ring-offset-2"
+          >
+            Skip to main content
+          </a>
 
-        <Cursor />
+          <Cursor />
 
-        <Navbar />
+          <Navbar />
 
-        <div id="main-content" className="relative z-0">
-          {children}
-        </div>
+          <div id="main-content" className="relative z-0">
+            {children}
+          </div>
 
-        <Footer />
+          <Footer />
 
-        {process.env.NODE_ENV === "production" && <Analytics />}
+          {process.env.NODE_ENV === "production" && <Analytics />}
+        </ThemeProvider>
       </body>
     </html>
   );
