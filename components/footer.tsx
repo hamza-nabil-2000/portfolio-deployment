@@ -1,19 +1,43 @@
+"use client";
+
 import { Linkedin, Mail, Github } from "lucide-react";
 
 const emailDraftUrl =
   "https://mail.google.com/mail/?view=cm&fs=1&to=hamzapk@gmail.com";
 
 const navLinks = [
-  { href: "/#home", label: "Home" },
-  { href: "/#about", label: "About" },
-  { href: "/#experience", label: "Experience" },
-  { href: "/#education", label: "Education" },
-  { href: "/#skills", label: "Skills" },
-  { href: "/#certifications", label: "Certifications" },
-  { href: "/#contact", label: "Contact" },
+  { path: "/home", id: "home", label: "Home" },
+  { path: "/about", id: "about", label: "About" },
+  { path: "/experience", id: "experience", label: "Experience" },
+  { path: "/education", id: "education", label: "Education" },
+  { path: "/skills", id: "skills", label: "Skills" },
+  {
+    path: "/certifications",
+    id: "certifications",
+    label: "Certifications",
+  },
+  { path: "/contact", id: "contact", label: "Contact" },
 ];
 
 export default function Footer() {
+  const scrollToSection = (sectionId: string, path: string) => {
+    const section = document.getElementById(sectionId);
+
+    if (!section) return;
+
+    const navbarHeight = 64;
+
+    const sectionPosition =
+      section.getBoundingClientRect().top + window.scrollY - navbarHeight;
+
+    window.scrollTo({
+      top: sectionPosition,
+      behavior: "smooth",
+    });
+
+    window.history.pushState({ section: sectionId }, "", path);
+  };
+
   return (
     <footer className="fixed bottom-0 left-0 w-full z-40 border-t border-primary/20 bg-background/95 backdrop-blur-md">
       <div className="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
@@ -29,13 +53,14 @@ export default function Footer() {
             className="flex flex-wrap items-center justify-center gap-x-4 sm:gap-x-6 gap-y-2"
           >
             {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm text-foreground/60 hover:text-primary transition-colors duration-300"
+              <button
+                key={link.id}
+                type="button"
+                onClick={() => scrollToSection(link.id, link.path)}
+                className="text-sm text-foreground/60 hover:text-primary transition-colors duration-300 cursor-pointer"
               >
                 {link.label}
-              </a>
+              </button>
             ))}
           </nav>
 
