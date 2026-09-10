@@ -39,7 +39,11 @@ export default function Navbar() {
         if (section.getBoundingClientRect().top <= 140) current = section.id;
       }
       // Short final sections may never reach the navbar before the page ends.
-      if (window.scrollY > 0 && window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) {
+      if (
+        window.scrollY > 0 &&
+        window.scrollY + window.innerHeight >=
+          document.documentElement.scrollHeight - 2
+      ) {
         current = sections[sections.length - 1].id;
       }
       setActiveSection(current);
@@ -73,7 +77,7 @@ export default function Navbar() {
           : "bg-background/50 backdrop-blur-sm border-b border-border"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
             <a
@@ -82,14 +86,13 @@ export default function Navbar() {
               className="flex items-center gap-2.5 group"
               aria-label="Home"
             >
-
               <span className="font-bold text-2xl tracking-wider text-primary group-hover:text-accent transition-colors duration-300">
                 HN
               </span>
             </a>
           </div>
 
-          <div className="hidden lg:flex items-center gap-6 xl:gap-8">
+          <div className="hidden lg:flex items-center whitespace-nowrap gap-4 xl:gap-8">
             {navLinks.map((link) => {
               const section = link.href.split("#")[1];
               const isActive = activeSection === section;
@@ -122,7 +125,7 @@ export default function Navbar() {
                 aria-label={isMenuOpen ? "Close navigation" : "Open navigation"}
                 aria-expanded={isMenuOpen}
                 aria-controls="mobile-navigation"
-                className="text-foreground hover:text-primary transition-colors cursor-pointer"
+                className="flex h-11 w-11 items-center justify-center text-foreground hover:text-primary transition-colors cursor-pointer"
               >
                 {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
               </button>
@@ -131,7 +134,10 @@ export default function Navbar() {
         </div>
 
         {isMenuOpen && (
-          <div id="mobile-navigation" className="lg:hidden pb-4 space-y-2 animate-slide-down">
+          <div
+            id="mobile-navigation"
+            className="lg:hidden max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain pb-4 space-y-2 animate-slide-down"
+          >
             {navLinks.map((link) => {
               const section = link.href.split("#")[1];
               const isActive = activeSection === section;

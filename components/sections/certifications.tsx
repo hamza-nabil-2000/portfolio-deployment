@@ -6,10 +6,10 @@ export default function Certifications() {
     <section id="certifications" className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 border-t border-border/50">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center gap-3 mt-8 md:mt-12 mb-8 md:mb-12">
-          <div className="p-2 md:p-3 rounded-lg bg-primary/10">
+          <div className="shrink-0 p-2 md:p-3 rounded-lg bg-primary/10">
             <Award className="text-primary w-7 h-7 md:w-8 md:h-8" />
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold neon-text-gradient">
+          <h2 className="min-w-0 break-words text-2xl sm:text-3xl md:text-4xl font-bold neon-text-gradient">
             Certifications
           </h2>
         </div>
@@ -19,10 +19,10 @@ export default function Certifications() {
               key={idx}
               className="neon-card p-5 md:p-6 flex items-start gap-4 group"
             >
-              <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
+              <div className="shrink-0 p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
                 <Award className="text-primary" size={24} />
               </div>
-              <div>
+              <div className="min-w-0 break-words">
                 <h3 className="text-lg font-bold text-primary">
                   {cert.title}
                 </h3>

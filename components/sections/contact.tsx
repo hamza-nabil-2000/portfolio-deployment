@@ -1,45 +1,48 @@
-import { Mail, Linkedin } from "lucide-react";
+import { Mail, Linkedin, Github } from "lucide-react";
 
 const emailDraftUrl =
   "https://mail.google.com/mail/?view=cm&fs=1&to=hamzapk@gmail.com";
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 border-t border-border/50">
+    <section
+      id="contact"
+      className="pt-16 md:pt-20 pb-40 md:pb-44 px-4 sm:px-6 lg:px-8 border-t border-border/50"
+    >
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center gap-3 mt-8 md:mt-12 mb-8 md:mb-12">
-          <div className="p-2 md:p-3 rounded-lg bg-primary/10">
+          <div className="shrink-0 p-2 md:p-3 rounded-lg bg-primary/10">
             <Mail className="text-primary w-7 h-7 md:w-8 md:h-8" />
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold neon-text-gradient">
+          <h2 className="min-w-0 break-words text-2xl sm:text-3xl md:text-4xl font-bold neon-text-gradient">
             Contact
           </h2>
         </div>
-        <div className="neon-card p-6 sm:p-8 md:p-12 text-center">
+        <div className="neon-card p-5 sm:p-8 md:p-12 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 md:mb-6 neon-text-gradient">
             Get In Touch
           </h2>
-          <p className="text-base sm:text-lg text-foreground/80 mb-6 md:mb-8 max-w-2xl mx-auto text-left sm:text-justify">
+          <p className="text-base sm:text-lg text-foreground/80 mb-6 md:mb-8 max-w-2xl mx-auto text-justify">
             Get in touch to discuss IT support opportunities, technical
-            troubleshooting, or collaboration. My experience covers hardware
-            and software support, Windows and Linux systems, networking, and
-            user access, supported by a background in QA and development.
+            troubleshooting, or collaboration. My experience covers hardware and
+            software support, Windows and Linux systems, networking, and user
+            access, supported by a background in QA and development.
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 w-full">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 w-full max-w-4xl mx-auto">
             <a
               href={emailDraftUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="neon-button inline-flex items-center justify-center gap-2 text-lg w-full sm:w-44 text-center"
+              className="neon-button inline-flex items-center justify-center gap-2 text-base xl:text-lg w-full min-w-0 whitespace-normal text-center"
             >
-              <Mail size={24} />
+              <Mail size={24} className="shrink-0" />
               EMAIL ME
             </a>
             <a
               href="https://wa.me/923318213810"
               target="_blank"
               rel="noopener noreferrer"
-              className="neon-button inline-flex items-center justify-center gap-2 text-lg w-full sm:w-44 text-center"
+              className="neon-button inline-flex items-center justify-center gap-2 text-base xl:text-lg w-full min-w-0 whitespace-normal text-center"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -55,10 +58,19 @@ export default function Contact() {
               href="https://linkedin.com/in/hamza-nabeel"
               target="_blank"
               rel="noopener noreferrer"
-              className="neon-button inline-flex items-center justify-center gap-2 text-lg w-full sm:w-44 text-center"
+              className="neon-button inline-flex items-center justify-center gap-2 text-base xl:text-lg w-full min-w-0 whitespace-normal text-center"
             >
-              <Linkedin size={24} />
+              <Linkedin size={24} className="shrink-0" />
               LINKEDIN
+            </a>
+            <a
+              href="https://github.com/hamza-nabil-2000"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="neon-button inline-flex items-center justify-center gap-2 text-base xl:text-lg w-full min-w-0 whitespace-normal text-center"
+            >
+              <Github size={24} className="shrink-0" />
+              GITHUB
             </a>
           </div>
         </div>

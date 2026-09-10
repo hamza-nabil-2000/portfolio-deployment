@@ -523,6 +523,8 @@
    * Cards with a subtle border that reveals a gradient border on hover.
    * Uses a mask-composite technique to create an animated border effect. */
   .neon-card {
+    min-width: 0;
+    overflow-wrap: break-word;
     position: relative;
     background: hsl(var(--card));
     border-radius: var(--radius-lg);
@@ -580,7 +582,7 @@
     border: none;
     transition: all 0.3s ease;
     overflow: hidden;
-    padding: 0.75rem 1.5rem;
+    padding: 0.75rem var(--button-padding-inline, clamp(0.75rem, 2vw, 1.5rem));
     border-radius: var(--radius-md);
     cursor: pointer;
     font-weight: 700;
