@@ -39,7 +39,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="fixed bottom-0 left-0 w-full z-40 border-t border-primary/20 bg-background/95 backdrop-blur-md">
+    <footer className="relative bottom-0 left-0 w-full z-40 border-t border-primary/20 bg-background/95 backdrop-blur-md">
       <div className="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
         <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-4">
           {/* Copyright */}
