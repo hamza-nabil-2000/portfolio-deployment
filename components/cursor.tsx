@@ -31,7 +31,7 @@ export default function Cursor() {
 
   return (
     <div
-      className="fixed pointer-events-none z-[100] hidden lg:block"
+      className="custom-cursor fixed top-0 left-0 pointer-events-none z-[100] hidden lg:block"
       style={{
         transform: `translate(${mousePosition.x - 20}px, ${mousePosition.y - 20}px) scale(${cursorHover ? 2 : 1})`,
         transition: "transform 0.12s ease-out, scale 0.15s ease-out",

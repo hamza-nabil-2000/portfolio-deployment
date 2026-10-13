@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import ThemeToggle from "@/components/theme-toggle";
 
@@ -22,6 +22,26 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const menuButton = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 1024px)");
+    const closeOnDesktop = () => {
+      if (desktop.matches) setIsMenuOpen(false);
+    };
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && isMenuOpen) {
+        setIsMenuOpen(false);
+        menuButton.current?.focus();
+      }
+    };
+    desktop.addEventListener("change", closeOnDesktop);
+    window.addEventListener("keydown", closeOnEscape);
+    return () => {
+      desktop.removeEventListener("change", closeOnDesktop);
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [isMenuOpen]);
 
   const scrollToSection = (
     sectionId: string,
@@ -58,6 +78,7 @@ export default function Navbar() {
       const currentPath = window.location.pathname;
 
       const matchedLink =
+        navLinks.find((link) => `#${link.id}` === window.location.hash) ??
         navLinks.find((link) => link.path === currentPath) ?? navLinks[0];
 
       const scrollToCurrentSection = () => {
@@ -82,16 +103,18 @@ export default function Navbar() {
     };
 
     // If user enters just /
-    if (window.location.pathname === "/") {
+    if (window.location.pathname === "/" && !window.location.hash) {
       window.history.replaceState({ section: "home" }, "", "/home");
     }
 
     handlePathNavigation();
 
     window.addEventListener("popstate", handlePathNavigation);
+    window.addEventListener("hashchange", handlePathNavigation);
 
     return () => {
       window.removeEventListener("popstate", handlePathNavigation);
+      window.removeEventListener("hashchange", handlePathNavigation);
     };
   }, []);
 
@@ -185,7 +208,7 @@ export default function Navbar() {
           : "bg-background/50 backdrop-blur-sm border-b border-border"
       }`}
     >
-      <div className="w-full px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
@@ -212,7 +235,7 @@ export default function Navbar() {
                   type="button"
                   onClick={() => scrollToSection(link.id, link.path)}
                   aria-current={isActive ? "location" : undefined}
-                  className={`relative pb-1 cursor-pointer hover:text-primary transition-all duration-300 group ${
+                  className={`relative inline-flex min-h-11 items-center cursor-pointer hover:text-primary transition-all duration-300 group ${
                     isActive ? "text-primary" : "text-foreground"
                   }`}
                 >
@@ -234,6 +257,7 @@ export default function Navbar() {
 
             <div className="lg:hidden">
               <button
+                ref={menuButton}
                 type="button"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 aria-label={isMenuOpen ? "Close navigation" : "Open navigation"}

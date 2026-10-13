@@ -377,6 +377,7 @@
 
   #main-content {
     flex: 1;
+    min-width: 0;
   }
 
   /* ── Animated Background Layers ──
@@ -1080,4 +1081,34 @@
 
 .hover-scale:hover {
   transform: scale(1.05);
+}
+
+/* Touch devices may have desktop-sized viewports without a mouse. */
+@media (hover: none), (pointer: coarse) {
+  .custom-cursor {
+    display: none;
+  }
+
+  .neon-card:hover,
+  .neon-button:hover,
+  .hover-scale:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .custom-cursor {
+    display: none;
+  }
 }

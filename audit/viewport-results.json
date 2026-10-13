@@ -1,0 +1,634 @@
+{
+  "first": [
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/home",
+      "width": 320
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/home",
+      "width": 375
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/home",
+      "width": 390
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/home",
+      "width": 426
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/home",
+      "width": 600
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/home",
+      "width": 768
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/home",
+      "width": 820
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/home",
+      "width": 1024
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/home",
+      "width": 1280
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/home",
+      "width": 1440
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/home",
+      "width": 1920
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/home",
+      "width": 320
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/home",
+      "width": 375
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/home",
+      "width": 390
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/home",
+      "width": 426
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/home",
+      "width": 600
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/home",
+      "width": 768
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/home",
+      "width": 820
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/home",
+      "width": 1024
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/home",
+      "width": 1280
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/home",
+      "width": 1440
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/home",
+      "width": 1920
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/about",
+      "width": 320
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/about",
+      "width": 375
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/about",
+      "width": 390
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/about",
+      "width": 426
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/about",
+      "width": 600
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/about",
+      "width": 768
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/about",
+      "width": 820
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/about",
+      "width": 1024
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/about",
+      "width": 1280
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/about",
+      "width": 1440
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/about",
+      "width": 1920
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/experience",
+      "width": 320
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/experience",
+      "width": 375
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/experience",
+      "width": 390
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/experience",
+      "width": 426
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/experience",
+      "width": 600
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/experience",
+      "width": 768
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/experience",
+      "width": 820
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/experience",
+      "width": 1024
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/experience",
+      "width": 1280
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/experience",
+      "width": 1440
+    },
+    {
+      "clipped": 0,
+      "overflow": false,
+      "path": "/experience",
+      "width": 1920
+    }
+  ],
+  "second": [
+    {
+      "requested": "/skills",
+      "clipped": 0,
+      "overflow": false,
+      "width": 320
+    },
+    {
+      "requested": "/skills",
+      "clipped": 0,
+      "overflow": false,
+      "width": 375
+    },
+    {
+      "requested": "/skills",
+      "clipped": 0,
+      "overflow": false,
+      "width": 390
+    },
+    {
+      "requested": "/skills",
+      "clipped": 0,
+      "overflow": false,
+      "width": 426
+    },
+    {
+      "requested": "/skills",
+      "clipped": 0,
+      "overflow": false,
+      "width": 600
+    },
+    {
+      "requested": "/skills",
+      "clipped": 0,
+      "overflow": false,
+      "width": 768
+    },
+    {
+      "requested": "/skills",
+      "clipped": 0,
+      "overflow": false,
+      "width": 820
+    },
+    {
+      "requested": "/skills",
+      "clipped": 0,
+      "overflow": false,
+      "width": 1024
+    },
+    {
+      "requested": "/skills",
+      "clipped": 0,
+      "overflow": false,
+      "width": 1280
+    },
+    {
+      "requested": "/skills",
+      "clipped": 0,
+      "overflow": false,
+      "width": 1440
+    },
+    {
+      "requested": "/skills",
+      "clipped": 0,
+      "overflow": false,
+      "width": 1920
+    },
+    {
+      "requested": "/certifications",
+      "clipped": 0,
+      "overflow": false,
+      "width": 320
+    },
+    {
+      "requested": "/certifications",
+      "clipped": 0,
+      "overflow": false,
+      "width": 375
+    },
+    {
+      "requested": "/certifications",
+      "clipped": 0,
+      "overflow": false,
+      "width": 390
+    },
+    {
+      "requested": "/certifications",
+      "clipped": 0,
+      "overflow": false,
+      "width": 426
+    },
+    {
+      "requested": "/certifications",
+      "clipped": 0,
+      "overflow": false,
+      "width": 600
+    },
+    {
+      "requested": "/certifications",
+      "clipped": 0,
+      "overflow": false,
+      "width": 768
+    },
+    {
+      "requested": "/certifications",
+      "clipped": 0,
+      "overflow": false,
+      "width": 820
+    },
+    {
+      "requested": "/certifications",
+      "clipped": 0,
+      "overflow": false,
+      "width": 1024
+    },
+    {
+      "requested": "/certifications",
+      "clipped": 0,
+      "overflow": false,
+      "width": 1280
+    },
+    {
+      "requested": "/certifications",
+      "clipped": 0,
+      "overflow": false,
+      "width": 1440
+    },
+    {
+      "requested": "/certifications",
+      "clipped": 0,
+      "overflow": false,
+      "width": 1920
+    },
+    {
+      "requested": "/contact",
+      "clipped": 0,
+      "overflow": false,
+      "width": 320
+    },
+    {
+      "requested": "/contact",
+      "clipped": 0,
+      "overflow": false,
+      "width": 375
+    },
+    {
+      "requested": "/contact",
+      "clipped": 0,
+      "overflow": false,
+      "width": 390
+    },
+    {
+      "requested": "/contact",
+      "clipped": 0,
+      "overflow": false,
+      "width": 426
+    },
+    {
+      "requested": "/contact",
+      "clipped": 0,
+      "overflow": false,
+      "width": 600
+    },
+    {
+      "requested": "/contact",
+      "clipped": 0,
+      "overflow": false,
+      "width": 768
+    },
+    {
+      "requested": "/contact",
+      "clipped": 0,
+      "overflow": false,
+      "width": 820
+    },
+    {
+      "requested": "/contact",
+      "clipped": 0,
+      "overflow": false,
+      "width": 1024
+    },
+    {
+      "requested": "/contact",
+      "clipped": 0,
+      "overflow": false,
+      "width": 1280
+    },
+    {
+      "requested": "/contact",
+      "clipped": 0,
+      "overflow": false,
+      "width": 1440
+    },
+    {
+      "requested": "/contact",
+      "clipped": 0,
+      "overflow": false,
+      "width": 1920
+    }
+  ],
+  "breakpoints": [
+    {
+      "documentWidth": 320,
+      "issues": [],
+      "width": 320
+    },
+    {
+      "documentWidth": 360,
+      "issues": [],
+      "width": 360
+    },
+    {
+      "documentWidth": 375,
+      "issues": [],
+      "width": 375
+    },
+    {
+      "documentWidth": 390,
+      "issues": [],
+      "width": 390
+    },
+    {
+      "documentWidth": 426,
+      "issues": [],
+      "width": 426
+    },
+    {
+      "documentWidth": 599,
+      "issues": [],
+      "width": 599
+    },
+    {
+      "documentWidth": 600,
+      "issues": [],
+      "width": 600
+    },
+    {
+      "documentWidth": 640,
+      "issues": [],
+      "width": 640
+    },
+    {
+      "documentWidth": 767,
+      "issues": [],
+      "width": 767
+    },
+    {
+      "documentWidth": 768,
+      "issues": [],
+      "width": 768
+    },
+    {
+      "documentWidth": 820,
+      "issues": [],
+      "width": 820
+    },
+    {
+      "documentWidth": 1023,
+      "issues": [],
+      "width": 1023
+    },
+    {
+      "documentWidth": 1024,
+      "issues": [],
+      "width": 1024
+    },
+    {
+      "documentWidth": 1279,
+      "issues": [],
+      "width": 1279
+    },
+    {
+      "documentWidth": 1280,
+      "issues": [],
+      "width": 1280
+    },
+    {
+      "documentWidth": 1440,
+      "issues": [],
+      "width": 1440
+    },
+    {
+      "documentWidth": 1920,
+      "issues": [],
+      "width": 1920
+    },
+    {
+      "documentWidth": 2560,
+      "issues": [],
+      "width": 2560
+    }
+  ],
+  "routes": [
+    {
+      "active": [
+        "Home"
+      ],
+      "hash": "",
+      "overflow": false,
+      "requested": "/home",
+      "sections": 8
+    },
+    {
+      "active": [
+        "Home"
+      ],
+      "hash": "",
+      "overflow": false,
+      "requested": "/home",
+      "sections": 8
+    },
+    {
+      "active": [
+        "About"
+      ],
+      "hash": "",
+      "overflow": false,
+      "requested": "/about",
+      "sections": 8
+    },
+    {
+      "active": [
+        "Experience"
+      ],
+      "hash": "",
+      "overflow": false,
+      "requested": "/experience",
+      "sections": 8
+    },
+    {
+      "active": [
+        "Education"
+      ],
+      "hash": "",
+      "overflow": false,
+      "requested": "/education",
+      "sections": 8
+    },
+    {
+      "active": [
+        "Skills"
+      ],
+      "hash": "",
+      "overflow": false,
+      "requested": "/skills",
+      "sections": 8
+    },
+    {
+      "active": [
+        "Certifications"
+      ],
+      "hash": "",
+      "overflow": false,
+      "requested": "/certifications",
+      "sections": 8
+    },
+    {
+      "active": [
+        "Contact"
+      ],
+      "hash": "",
+      "overflow": false,
+      "requested": "/contact",
+      "sections": 8
+    }
+  ]
+}

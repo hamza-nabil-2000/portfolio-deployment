@@ -40,7 +40,7 @@ export default function Footer() {
 
   return (
     <footer className="relative bottom-0 left-0 w-full z-40 border-t border-primary/20 bg-background/95 backdrop-blur-md">
-      <div className="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
+      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
         <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-4">
           {/* Copyright */}
           <p className="text-sm text-foreground/60 text-center xl:text-left">
@@ -50,14 +50,14 @@ export default function Footer() {
           {/* Navigation Links */}
           <nav
             aria-label="Footer navigation"
-            className="flex flex-wrap items-center justify-center gap-x-4 sm:gap-x-6 gap-y-2"
+            className="flex flex-wrap items-center justify-center gap-x-4 sm:gap-x-6 gap-y-0"
           >
             {navLinks.map((link) => (
               <button
                 key={link.id}
                 type="button"
                 onClick={() => scrollToSection(link.id, link.path)}
-                className="text-sm text-foreground/60 hover:text-primary transition-colors duration-300 cursor-pointer"
+                className="inline-flex min-h-11 items-center text-sm text-foreground/60 hover:text-primary transition-colors duration-300 cursor-pointer"
               >
                 {link.label}
               </button>
@@ -65,14 +65,14 @@ export default function Footer() {
           </nav>
 
           {/* Social Links */}
-          <div className="flex items-center justify-center xl:justify-end gap-6 text-foreground/60">
+          <div className="flex items-center justify-center xl:justify-end gap-2 text-foreground/60">
             {/* LinkedIn */}
             <a
               href="https://linkedin.com/in/hamza-nabeel"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
-              className="hover:text-primary transition-all duration-300 hover:scale-110 cursor-pointer"
+              className="inline-flex h-11 w-11 items-center justify-center hover:text-primary transition-all duration-300 hover:scale-110 cursor-pointer"
             >
               <Linkedin size={20} />
             </a>
@@ -83,7 +83,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
-              className="hover:text-primary transition-all duration-300 hover:scale-110 cursor-pointer"
+              className="inline-flex h-11 w-11 items-center justify-center hover:text-primary transition-all duration-300 hover:scale-110 cursor-pointer"
             >
               <Github size={20} />
             </a>
@@ -94,7 +94,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp"
-              className="hover:text-primary transition-all duration-300 hover:scale-110 cursor-pointer"
+              className="inline-flex h-11 w-11 items-center justify-center hover:text-primary transition-all duration-300 hover:scale-110 cursor-pointer"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -112,7 +112,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Email Me"
-              className="hover:text-primary transition-all duration-300 hover:scale-110 cursor-pointer"
+              className="inline-flex h-11 w-11 items-center justify-center hover:text-primary transition-all duration-300 hover:scale-110 cursor-pointer"
             >
               <Mail size={20} />
             </a>
