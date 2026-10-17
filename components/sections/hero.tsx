@@ -43,7 +43,7 @@ export default function Hero() {
           </h1>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm animate-glow-pulse select-none">
             <Sparkles size={16} />
-            <span>IT Support Engineer</span>
+            <span>Junior IT Manager</span>
           </div>
         </div>
 
@@ -54,20 +54,20 @@ export default function Hero() {
             </h1>
             <div className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm animate-glow-pulse select-none">
               <Sparkles size={16} />
-              <span>IT Support Engineer</span>
+              <span>Junior IT Manager</span>
             </div>
             <p className="text-lg sm:text-xl text-muted-foreground animate-slide-in text-justify">
-              Keeping people productive through reliable IT support and
+              Keeping systems reliable and people productive through IT operations and
               practical problem-solving
             </p>
             <div className="space-y-3">
               <p className="text-base sm:text-lg text-foreground/80 leading-relaxed animate-slide-in animation-delay-200 text-justify">
-                IT Support Engineer with hands-on experience troubleshooting
-                hardware, software, networking, system configuration, and user
-                access issues. I provide reliable technical support and keep
-                day-to-day system operations running smoothly. My background
-                spans software development and QA, backed by a BS in Information
-                Technology.
+                Junior IT Manager with progressive experience in IT support,
+                software quality assurance, and web development at CHI
+                Technologies. I work with Windows/Linux administration,
+                Microsoft 365, network troubleshooting, server monitoring, and
+                virtualization, with a focus on system reliability, security,
+                and responsive user support. I hold a BS in Information Technology.
               </p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3 pt-4 animate-slide-in animation-delay-400 w-full">

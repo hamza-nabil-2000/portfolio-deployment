@@ -30,13 +30,17 @@ const firaCode = Fira_Code({
 
 export const metadata: Metadata = {
   title: {
-    default: "Hamza Nabil - IT Support Engineer",
+    default: "Hamza Nabil - Junior IT Manager",
     template: "%s | Hamza Nabil",
   },
   description:
-    "IT Support Engineer with hands-on experience in hardware, software, Windows and Linux, networking, system configuration, and user access troubleshooting. Background in QA and software development.",
+    "Junior IT Manager at CHI Technologies with experience in Windows/Linux administration, IT operations, Microsoft 365, networking, server monitoring, and virtualization. Background in QA and web development.",
   keywords: [
-    "IT Support Engineer",
+    "Junior IT Manager",
+    "IT Operations",
+    "Microsoft 365 Administration",
+    "Server Monitoring",
+    "Proxmox VE",
     "Windows and Linux",
     "Networking",
     "Technical Support",
@@ -68,22 +72,22 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://hamzanabil.com",
-    siteName: "Hamza Nabil - IT Support Engineer",
-    title: "Hamza Nabil - IT Support Engineer",
+    siteName: "Hamza Nabil - Junior IT Manager",
+    title: "Hamza Nabil - Junior IT Manager",
     description:
-      "IT Support Engineer helping people resolve hardware, software, networking, and user access issues.",
+      "Junior IT Manager focused on reliable IT operations, Microsoft 365 administration, server monitoring, security, and responsive user support.",
     images: [
       {
         url: "/pfp.jpeg",
-        alt: "Hamza Nabil - IT Support Engineer",
+        alt: "Hamza Nabil - Junior IT Manager",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hamza Nabil - IT Support Engineer",
+    title: "Hamza Nabil - Junior IT Manager",
     description:
-      "IT Support Engineer with a background in QA and software development.",
+      "Junior IT Manager with experience in IT operations, Windows/Linux, Microsoft 365, networking, and virtualization.",
     images: ["/pfp.jpeg"],
     creator: "@hamzanabil",
     site: "@hamzanabil",

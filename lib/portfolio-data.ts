@@ -65,17 +65,30 @@ export const certifications = [
 
 export const roles = [
   {
-    title: "IT Support Engineer",
-    period: "July 2026 - Present",
+    title: "Junior IT Manager",
+    period: "October 2026 - Present",
     highlights: [
-      "Provide day-to-day technical support for hardware, software, networking, and user access issues.",
-      "Install, configure, troubleshoot, and maintain Windows and Ubuntu/Linux systems.",
-      "Manage user accounts, permissions, system configurations, software updates, and basic system administration tasks.",
-      "Use PowerShell, Command Prompt, Linux Terminal, SSH, Git, Azure DevOps, and Docker for technical support and system-related activities.",
-      "Identify root causes of technical issues and provide timely resolutions to minimize operational disruption.",
+      "Support daily IT operations, user assistance, and the reliability and security of office systems and services.",
+      "Monitor server availability and investigate system, network, account access, and service-related issues.",
+      "Support Microsoft 365 account and mailbox administration, MFA, permissions, and email configuration.",
+      "Assist with Windows/Linux infrastructure, networking, VPN connectivity, virtual machines, and security practices.",
+      "Collaborate with engineering teams on infrastructure troubleshooting and operational improvements.",
     ],
   },
-  { title: "Software Quality Assurance Engineer", period: "April 2025 - July 2026", highlights: experienceHighlights },
+  {
+    title: "IT Support Engineer",
+    period: "July 2026 - September 2026",
+    highlights: [
+      "Resolved hardware, software, network, and access issues to minimize operational interruptions.",
+      "Installed and maintained Windows and Ubuntu/Linux systems; managed updates, accounts, and permissions.",
+      "Used PowerShell, Linux commands, SSH, Docker, and Azure DevOps to support technical operations.",
+    ],
+  },
+  {
+    title: "Software Quality Assurance Engineer",
+    period: "April 2025 - July 2026",
+    highlights: experienceHighlights,
+  },
   {
     title: "Software Development",
     period: "October 2024 - April 2025",
@@ -90,19 +103,66 @@ export const roles = [
 ];
 
 export const skillGroups = [
-  { title: "IT Support & Troubleshooting", items: [
-    "Hardware troubleshooting", "Software installation & configuration", "Incident troubleshooting & root cause identification", "System configuration, updates & maintenance", "User accounts, access & permissions",
-  ] },
-  { title: "Systems & Networking", items: [
-    "Windows 10/11, Ubuntu/Linux & macOS", "Windows & Linux administration", "User & group management, file permissions & services", "TCP/IP, DNS, DHCP & IP addressing", "Wi-Fi & LAN troubleshooting, Ping & SSH",
-  ] },
-  { title: "Tools & Platforms", items: [
-    "PowerShell, Command Prompt & Linux Terminal", "Docker", "Git, GitHub & Azure DevOps", "Visual Studio Code & Microsoft Visual Studio", "SQL Server Management Studio",
-  ] },
-  { title: "Testing & QA", items: [
-    "Playwright (TypeScript)", "Selenium (Introductory)", "Manual & automated testing", "Functional, regression, API, UI/UX & non-functional testing", "Test case design, defect reporting & bug tracking", "SDLC, STLC & Agile/Scrum",
-  ] },
-  { title: "Web Technologies", note: "Working knowledge", items: [
-    "HTML5 & CSS3", "PHP", "Angular", "ReactJS & NextJS",
-  ] },
+  {
+    title: "IT Operations & Support",
+    items: [
+      "Incident troubleshooting",
+      "Hardware & software maintenance",
+      "User assistance",
+      "Root cause analysis",
+    ],
+  },
+  {
+    title: "Systems Administration",
+    items: [
+      "Windows 10/11 & Windows Server",
+      "Ubuntu/Linux & macOS",
+      "Users, groups, permissions & services",
+    ],
+  },
+  {
+    title: "Networking & Remote Access",
+    items: [
+      "TCP/IP, DNS, DHCP & IP addressing",
+      "Wi-Fi & LAN",
+      "VPN & SSH",
+      "Connectivity diagnostics",
+    ],
+  },
+  {
+    title: "Microsoft 365 Administration",
+    items: [
+      "User accounts",
+      "Exchange Online mailboxes",
+      "Permissions & MFA",
+      "Email configuration",
+    ],
+  },
+  {
+    title: "Infrastructure & Monitoring",
+    items: [
+      "Proxmox VE & virtual machines",
+      "Docker",
+      "Routine server checks",
+      "Wazuh exposure",
+    ],
+  },
+  {
+    title: "Scripting & Collaboration",
+    items: [
+      "PowerShell & Bash",
+      "Linux Terminal",
+      "Git, GitHub & Azure DevOps",
+    ],
+  },
+  {
+    title: "Development & QA Background",
+    items: [
+      "React/Next.js & Angular",
+      "HTML/CSS & MySQL",
+      "Playwright with TypeScript",
+      "Functional & regression testing",
+      "Manual test cases & defect tracking",
+    ],
+  },
 ];

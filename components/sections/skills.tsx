@@ -13,7 +13,6 @@ export default function Skills() {
           {skillGroups.map((group) => (
             <div key={group.title} className="neon-card p-5 sm:p-6 md:p-8">
               <h3 className="text-xl font-bold text-primary mb-2">{group.title}</h3>
-              {group.note && <p className="text-sm text-muted-foreground mb-4">{group.note}</p>}
               <ul className="space-y-3 mt-5">
                 {group.items.map((item) => <li key={item} className="flex items-start gap-3 text-foreground/80"><Check size={18} className="text-primary shrink-0 mt-1" /><span className="min-w-0 break-words">{item}</span></li>)}
               </ul>

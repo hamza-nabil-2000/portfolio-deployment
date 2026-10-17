@@ -15,12 +15,12 @@ export default function About() {
         <div className="grid md:grid-cols-2 gap-8 md:gap-12">
           <div className="space-y-4">
             <p className="text-base sm:text-lg text-foreground/80 leading-relaxed text-justify">
-              I am an IT Support Engineer at CHI Technologies in Islamabad,
-              supporting hardware, software, networking, and user access needs.
-              My work includes Windows and Ubuntu/Linux troubleshooting, user
-              account and permission management, system configuration, and
-              software maintenance. I focus on finding root causes and resolving
-              technical issues to keep people productive.
+              I am a Junior IT Manager at CHI Technologies in Islamabad,
+              supporting daily IT operations and the reliability and security of
+              office systems and services. My work includes Windows/Linux system
+              administration, Microsoft 365 accounts and mailboxes, server
+              monitoring, network troubleshooting, and virtualization. I focus on
+              responsive user support and practical problem-solving.
             </p>
           </div>
           <div className="space-y-4">
@@ -28,7 +28,8 @@ export default function About() {
               I hold a BS in Information Technology with a 3.51 GPA from PMAS
               Arid Agriculture University and joined CHI Technologies in October 2024. I moved from software
               development into QA in April 2025, then into IT support in July
-              2026. My earlier work includes Playwright automation, healthcare
+              2026, before becoming Junior IT Manager on 1 October 2026.
+              My earlier work includes Playwright automation, healthcare
               application testing, and frontend development with Angular,
               ReactJS, and NextJS.
             </p>
